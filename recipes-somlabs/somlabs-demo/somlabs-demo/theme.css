@@ -1,0 +1,24 @@
+.button_style {
+  border-image: none;
+  background-image: none;
+  background-color: gray;
+  color: snow;
+  opacity: 0.8;
+  border-radius: 0px;
+}
+
+.button_style:active {
+  background-color: silver;
+  opacity: 1.0;
+}
+
+.label_style {
+  color: silver;
+}
+
+.window_style {
+  background-image: url("background.jpg");
+}
+
+.video_frame_style {
+}
