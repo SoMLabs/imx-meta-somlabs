@@ -20,7 +20,7 @@ SRC_URI = " \
     file://theme.css \
     "
 
-EXAMPLE_VIDEO_URL = "http://ftp.somlabs.com/VisionSOM-STM32MP1/SoMLabs-STM32MP1-vdemo-2020-05.mp4"
+EXAMPLE_VIDEO_URL = "http://ftp.somlabs.com/VisionSOM-6ULL/SoMLabs-iMX6ULL-vdemo-2020-06.mp4"
 
 S = "${WORKDIR}"
 
