@@ -32,17 +32,27 @@ echo "BBLAYERS += \"\${BSPDIR}/sources/meta-somlabs\"" >> $BUILD_DIR/conf/bblaye
 echo "LICENSE_FLAGS_WHITELIST = \"commercial\"" >> $BUILD_DIR/conf/local.conf
 ```
 
-System building may be configured and started by the following commands:
+System building may be configured for one of the available machine configurations:
+
+visioncb-6ull-std-emmc-btwifi - VisionCB-6ULL-STD board with eMMC and wireless modem VisionSOM-6ULL version
+visioncb-6ull-std-emmc - VisionCB-6ULL-STD board with eMMC VisionSOM-6ULL version
+visioncb-6ull-std-sd-btwifi - VisionCB-6ULL-STD board with SD-card and wireless modem VisionSOM-6ULL version
+visioncb-6ull-std-sd - VisionCB-6ULL-STD board with SD-card VisionSOM-6ULL version
+
+System building may be started by the following commands:
 
 ```shell
-DISTRO=fsl-imx-wayland MACHINE=visionsom6ull source imx-setup-release.sh -b visionsom6ull-wayland-build
+DISTRO=fsl-imx-wayland MACHINE=<SELECTED_MACHINE> source imx-setup-release.sh -b visioncb-6ull-std-wayland-build
 bitbake fsl-image-validation-imx
 ```
 
-The system image is located in the fsl-image-validation-imx-visionsom6ull.sdcard.bz2 file in the tmp/deploy/images/visionsom6ull directory. It should be extracted and installed on a SD-card:
+The system image is located in the fsl-image-validation-imx-<SELECTED_MACHINE>.sdcard.bz2 file in the tmp/deploy/images/<SELECTED_MACHINE> directory. It should be extracted and installed on a SD-card:
 
 ```shell
-bunzip2 -dkf fsl-image-validation-imx-visionsom6ull.sdcard.bz2
-sudo dd if=fsl-image-validation-imx-visionsom6ull.sdcard of=/dev/sdX bs=1M
+bunzip2 -dkf fsl-image-validation-imx-<SELECTED_MACHINE>.sdcard.bz2 
+sudo dd if=fsl-image-validation-imx-<SELECTED_MACHINE>.sdcard of=/dev/sdX bs=1M
 ```
 
+The instruction for the eMMC memory image installation may be found on the following wiki page:
+
+https://wiki.somlabs.com/index.php/Writing_system_image_to_eMMC_memory

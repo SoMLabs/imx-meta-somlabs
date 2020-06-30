@@ -1,10 +1,10 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-KERNEL_BRANCH_visionsom6ull = "imx_5.4.3_2.0.0"
-LOCALVERSION_visionsom6ull = "-lts-${KERNEL_BRANCH}"
-KERNEL_SRC_visionsom6ull = "git://github.com/SoMLabs/somlabs-linux-imx.git;protocol=http"
-SRC_URI_visionsom6ull = "${KERNEL_SRC};branch=${KERNEL_BRANCH}"
-SRCREV_visionsom6ull = "6d9670bb46b423e871097dc35ee826df744e7764"
+KERNEL_BRANCH = "imx_5.4.3_2.0.0"
+LOCALVERSION = "-lts-${KERNEL_BRANCH}"
+KERNEL_SRC = "git://github.com/SoMLabs/somlabs-linux-imx.git;protocol=http"
+SRC_URI = "${KERNEL_SRC};branch=${KERNEL_BRANCH}"
+SRCREV = "cd64dd9282a32d35828be1f480151f1feed02068"
 
 IMX_KERNEL_CONFIG_AARCH32 = "somlabs-visionsom_defconfig"
 

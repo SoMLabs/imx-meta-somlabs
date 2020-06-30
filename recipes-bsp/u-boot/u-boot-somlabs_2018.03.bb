@@ -31,6 +31,10 @@ UBOOT_NAME_mx7 = "u-boot-${MACHINE}.bin-${UBOOT_CONFIG}"
 
 SRC_URI += "file://splash.bmp" 
 
+do_compile_prepend() {
+	sed -i "s/setfdtfile=setenv fdt_file somlabs-\${board}\${fdt_suffix}.dtb/setfdtfile=setenv fdt_file ${KERNEL_DEVICETREE}/g" ${S}/include/configs/somlabs_visionsom_6ull.h
+}
+
 do_install_append() {
 	install -d ${DEPLOY_DIR_IMAGE}
 	install -m 0644 ${WORKDIR}/splash.bmp ${DEPLOY_DIR_IMAGE}/splash.bmp
