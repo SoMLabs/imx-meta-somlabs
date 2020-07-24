@@ -5,7 +5,7 @@ MACHINEOVERRIDES =. "mx8:mx8m:mx8mm:"
 require conf/machine/include/imx-base.inc
 require conf/machine/include/tune-cortexa53.inc
 
-MACHINE_FEATURES += " pci wifi bluetooth optee qca9377 bcm43455 bcm4356 bcm4359"
+MACHINE_FEATURES += " pci optee qca9377"
 
 UBOOT_CONFIG ??= "sd"
 UBOOT_CONFIG[sd] = "visionsom_8mm_defconfig,sdcard"
