@@ -38,11 +38,12 @@ visioncb-6ull-std-emmc-btwifi - VisionCB-6ULL-STD board with eMMC and wireless m
 visioncb-6ull-std-emmc - VisionCB-6ULL-STD board with eMMC VisionSOM-6ULL version
 visioncb-6ull-std-sd-btwifi - VisionCB-6ULL-STD board with SD-card and wireless modem VisionSOM-6ULL version
 visioncb-6ull-std-sd - VisionCB-6ULL-STD board with SD-card VisionSOM-6ULL version
+visionsom-8mm-cb-std - VisionCB-8M-STD board with SD-card and wireless modem VisionSOM-8MM version
 
 System building may be started by the following commands:
 
 ```shell
-DISTRO=fsl-imx-wayland MACHINE=<SELECTED_MACHINE> source imx-setup-release.sh -b visioncb-6ull-std-wayland-build
+DISTRO=fsl-imx-wayland MACHINE=<SELECTED_MACHINE> source imx-setup-release.sh -b <BUILD_DIRECTORY>
 bitbake fsl-image-validation-imx
 ```
 
