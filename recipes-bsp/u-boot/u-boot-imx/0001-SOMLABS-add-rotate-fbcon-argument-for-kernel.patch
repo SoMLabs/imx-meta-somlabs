@@ -1,0 +1,30 @@
+From 70d46927da72370a462d9aaf50aaa463d3153bfe Mon Sep 17 00:00:00 2001
+From: Krzysztof Chojnowski <krzysiek@embedev.pl>
+Date: Wed, 22 Jul 2020 12:01:19 +0200
+Subject: [PATCH] SOMLABS: add rotate fbcon argument for kernel
+
+---
+ include/configs/visionsom_8mm.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/include/configs/visionsom_8mm.h b/include/configs/visionsom_8mm.h
+index a717d41126..b38face812 100644
+--- a/include/configs/visionsom_8mm.h
++++ b/include/configs/visionsom_8mm.h
+@@ -21,6 +21,7 @@
+ 	"mfgtool_args=setenv bootargs console=${console},${baudrate} " \
+ 		"rdinit=/linuxrc " \
+ 		"clk_ignore_unused "\
++		"fbcon=rotate:1 "\
+ 		"\0" \
+ 	"kboot="MFG_BOOT_CMD"\0"\
+ 	"bootcmd_mfg=run mfgtool_args;" \
+@@ -158,7 +159,7 @@
+ 	"mmcpart=" __stringify(CONFIG_SYS_MMC_IMG_LOAD_PART) "\0" \
+ 	"mmcroot=" CONFIG_MMCROOT " rootwait rw\0" \
+ 	"mmcautodetect=yes\0" \
+-	"mmcargs=setenv bootargs ${jh_clk} console=${console} root=${mmcroot}\0 " \
++	"mmcargs=setenv bootargs ${jh_clk} console=${console} root=${mmcroot} fbcon=rotate:1\0 " \
+ 	"loadbootscript=fatload mmc ${mmcdev}:${mmcpart} ${loadaddr} ${script};\0" \
+ 	"bootscript=echo Running bootscript from mmc ...; " \
+ 		"source\0" \

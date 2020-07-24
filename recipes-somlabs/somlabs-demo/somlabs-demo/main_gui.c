@@ -15,6 +15,8 @@ unsigned long int time2old;
 unsigned long int time3old;
 unsigned long int time4old;
 
+char* ledPath;
+
 static void on_about_to_finish(GstElement* playbin, gpointer user_data)
 {
   g_object_set(playbin, "uri", VIDEO_URI, NULL);
@@ -107,6 +109,13 @@ int main(int argc, char* argv[])
     GtkBuilder* builder; 
     GtkWidget* window;
 
+    if(argc != 2) {
+        printf("Usage: somlabs_demo_gui LED_FILE_PATH\n");
+	return 1;
+    }
+
+    ledPath = argv[1];
+
     gtk_init(&argc, &argv);
     gst_init(&argc, &argv);
 
@@ -159,13 +168,18 @@ void on_window_main_destroy()
 
 void on_ledButton_clicked(GtkButton* button, gpointer user_data)
 {
+
+    char ledCmd[128];
     static bool ledOn = false;
+
     if(ledOn) {
+	sprintf(ledCmd, "echo 0 > %s/brightness", ledPath);
         ledOn = false;
-        system("echo 0 > /sys/class/leds/usr3/brightness");
+        system(ledCmd);
     } else {
+	sprintf(ledCmd, "echo 1 > %s/brightness", ledPath);
         ledOn = true;
-        system("echo 1 > /sys/class/leds/usr3/brightness");
+        system(ledCmd);
     }
 }
 

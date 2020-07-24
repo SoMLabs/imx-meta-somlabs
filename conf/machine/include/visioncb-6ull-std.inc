@@ -9,10 +9,7 @@ include conf/machine/include/tune-cortexa7.inc
 UBOOT_CONFIG ??= "sd"
 UBOOT_CONFIG[sd] = "somlabs_visionsom_6ull_defconfig"
 
-PREFERRED_PROVIDER_u-boot_visioncb-6ull-std = "u-boot-somlabs"
-PREFERRED_PROVIDER_virtual/bootloader_visioncb-6ull-std = "u-boot-somlabs"
-
-EXTRA_IMAGEDEPENDS += "u-boot-somlabs"
+PREFERRED_VERSION_u-boot-imx = "2018.03"
 
 IMAGE_BOOT_FILES = " \
 	${KERNEL_IMAGETYPE} \
