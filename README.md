@@ -22,7 +22,7 @@ cd imx-yocto-bsp
 repo init -u https://source.codeaurora.org/external/imx/imx-manifest -b imx-linux-zeus -m imx-5.4.3-2.0.0.xml
 repo sync
 cd sources
-git clone https://github.com/SoMLabs/imx-meta-somlabs.git meta-somlabs
+git clone -b zeus https://github.com/SoMLabs/imx-meta-somlabs.git meta-somlabs
 ```
 
 The following lines need to be added to the imx-yocto-bsp/imx-setup-release.sh file in order to add the meta-somlabs layer to build and enable the commercial license in build:

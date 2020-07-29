@@ -5,7 +5,7 @@ MACHINEOVERRIDES =. "mx8:mx8m:mx8mm:"
 require conf/machine/include/imx-base.inc
 require conf/machine/include/tune-cortexa53.inc
 
-MACHINE_FEATURES += " pci optee qca9377"
+MACHINE_FEATURES += " pci optee"
 
 UBOOT_CONFIG ??= "sd"
 UBOOT_CONFIG[sd] = "visionsom_8mm_defconfig,sdcard"
@@ -17,7 +17,7 @@ UBOOT_DTB_NAME = "visionsom-8mm.dtb"
 
 IMXBOOT_TARGETS = "flash_evk"
 
-SERIAL_CONSOLES = "115200;ttymxc0"
+SERIAL_CONSOLES = "115200;ttymxc3"
 
 IMAGE_BOOTLOADER = "imx-boot"
 
