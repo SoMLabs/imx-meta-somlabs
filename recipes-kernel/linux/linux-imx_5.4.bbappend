@@ -7,8 +7,8 @@ SRC_URI = "${KERNEL_SRC};branch=${KERNEL_BRANCH} \
            file://visionsom_6ull_defconfig \
            "
 
-KERNEL_BRANCH = "somlabs_lf-5.4.y"
-SRCREV = "28666b826fa645509e662764714dd35d92cf7618"
+KERNEL_BRANCH = "somlabs_imx_5.4.24_2.1.0"
+SRCREV = "44bf2046fae8c84d3f8a7c4cd2a949d71c3e33b9"
 
 IMX_KERNEL_CONFIG_AARCH32_visioncb-6ull-std = "visionsom_6ull_defconfig"
 IMX_KERNEL_CONFIG_AARCH64_visionsom-8mm-cb = "visionsom_8mm_defconfig"
