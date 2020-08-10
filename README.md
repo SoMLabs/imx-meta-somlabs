@@ -34,11 +34,11 @@ echo "LICENSE_FLAGS_WHITELIST = \"commercial\"" >> $BUILD_DIR/conf/local.conf
 
 System building may be configured for one of the available machine configurations:
 
-visioncb-6ull-std-emmc-btwifi - VisionCB-6ULL-STD board with eMMC and wireless modem VisionSOM-6ULL version
-visioncb-6ull-std-emmc - VisionCB-6ULL-STD board with eMMC VisionSOM-6ULL version
-visioncb-6ull-std-sd-btwifi - VisionCB-6ULL-STD board with SD-card and wireless modem VisionSOM-6ULL version
-visioncb-6ull-std-sd - VisionCB-6ULL-STD board with SD-card VisionSOM-6ULL version
-visionsom-8mm-cb-std - VisionCB-8M-STD board with SD-card and wireless modem VisionSOM-8MM version
+* visioncb-6ull-std-emmc-btwifi - VisionCB-6ULL-STD board with eMMC and wireless modem VisionSOM-6ULL version
+* visioncb-6ull-std-emmc - VisionCB-6ULL-STD board with eMMC VisionSOM-6ULL version
+* visioncb-6ull-std-sd-btwifi - VisionCB-6ULL-STD board with SD-card and wireless modem VisionSOM-6ULL version
+* visioncb-6ull-std-sd - VisionCB-6ULL-STD board with SD-card VisionSOM-6ULL version
+* visionsom-8mm-cb-std - VisionCB-8M-STD board with SD-card and wireless modem VisionSOM-8MM version
 
 System building may be started by the following commands:
 
@@ -48,6 +48,14 @@ bitbake fsl-image-validation-imx
 ```
 
 The system image is located in the fsl-image-validation-imx-<SELECTED_MACHINE>.sdcard.bz2 file in the tmp/deploy/images/<SELECTED_MACHINE> directory. It should be extracted and installed on a SD-card:
+
+### NOTE
+
+Before building the image a proper LPDDR4 memory configuration needs to be set in the u-boot defconfig file located in meta-somlabs/recipes-bsp/u-boot/u-boot-imx/visionsom_8mm_defconfig. There are the following options available:
+
+* CONFIG_VISIOSOM_8MM_MEMORY_K4F6E304HBMGCJ=y (set by default)
+* CONFIG_VISIOSOM_8MM_MEMORY_MT53D512M32D2DS=y
+* CONFIG_VISIOSOM_8MM_MEMORY_MT53B256M32D1DS=y
 
 ```shell
 bunzip2 -dkf fsl-image-validation-imx-<SELECTED_MACHINE>.sdcard.bz2 
