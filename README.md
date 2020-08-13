@@ -49,14 +49,6 @@ bitbake fsl-image-validation-imx
 
 The system image is located in the fsl-image-validation-imx-<SELECTED_MACHINE>.sdcard.bz2 file in the tmp/deploy/images/<SELECTED_MACHINE> directory. It should be extracted and installed on a SD-card:
 
-### NOTE
-
-Before building the image a proper LPDDR4 memory configuration needs to be set in the u-boot defconfig file located in meta-somlabs/recipes-bsp/u-boot/u-boot-imx/visionsom_8mm_defconfig. There are the following options available:
-
-* CONFIG_VISIOSOM_8MM_MEMORY_K4F6E304HBMGCJ=y (set by default)
-* CONFIG_VISIOSOM_8MM_MEMORY_MT53D512M32D2DS=y
-* CONFIG_VISIOSOM_8MM_MEMORY_MT53B256M32D1DS=y
-
 ```shell
 bunzip2 -dkf fsl-image-validation-imx-<SELECTED_MACHINE>.sdcard.bz2 
 sudo dd if=fsl-image-validation-imx-<SELECTED_MACHINE>.sdcard of=/dev/sdX bs=1M
