@@ -7,9 +7,9 @@ include conf/machine/include/imx-base.inc
 include conf/machine/include/tune-cortexa7.inc
 
 UBOOT_CONFIG ??= "sd"
-UBOOT_CONFIG[sd] = "somlabs_visionsom_6ull_defconfig"
+UBOOT_CONFIG[sd] = "visionsom_6ull_defconfig,sdcard"
 
-PREFERRED_VERSION_u-boot-imx = "2018.03"
+UBOOT_DTB_NAME = "visionsom-6ull.dtb"
 
 IMAGE_BOOT_FILES = " \
 	${KERNEL_IMAGETYPE} \

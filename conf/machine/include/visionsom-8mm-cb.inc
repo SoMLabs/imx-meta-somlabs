@@ -24,10 +24,6 @@ IMAGE_BOOTLOADER = "imx-boot"
 LOADADDR = ""
 IMX_BOOT_SEEK = "33"
 
-# PREFERRED_PROVIDER_u-boot_visionsom-8mm-cb = "u-boot-somlabs"
-# PREFERRED_PROVIDER_virtual/bootloader_visionsom-8mm-cb = "u-boot-somlabs"
-# EXTRA_IMAGEDEPENDS += "u-boot-somlabs"
-
 IMAGE_BOOT_FILES = " \
 	${KERNEL_IMAGETYPE} \
 	${@make_dtb_boot_files(d)} \
