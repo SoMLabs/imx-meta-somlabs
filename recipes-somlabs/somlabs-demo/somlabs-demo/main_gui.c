@@ -10,6 +10,7 @@
 GstElement* pipeline;
 GtkWidget* videoWidget;
 GtkLabel* usageLabel;
+bool videoContextSet = false;
 unsigned long int time1old;
 unsigned long int time2old;
 unsigned long int time3old;
@@ -24,10 +25,12 @@ static void on_about_to_finish(GstElement* playbin, gpointer user_data)
 
 static GstBusSyncReply bus_sync_handler(GstBus* bus, GstMessage* message, gpointer user_data)
 {
-    if(gst_is_wayland_display_handle_need_context_message(message)) {
-        GstContext* context;
-        GdkDisplay* display;
-        struct wl_display* display_handle;
+    static bool context_set = false;
+
+    if(gst_is_wayland_display_handle_need_context_message(message) && !videoContextSet) {
+        GstContext* context = NULL;
+        GdkDisplay* display = NULL;
+        struct wl_display* display_handle = NULL;
 
         display = gtk_widget_get_display(videoWidget);
         display_handle = gdk_wayland_display_get_wl_display(display);
@@ -35,6 +38,7 @@ static GstBusSyncReply bus_sync_handler(GstBus* bus, GstMessage* message, gpoint
         gst_element_set_context(GST_ELEMENT(GST_MESSAGE_SRC(message)), context);
 	gst_message_unref(context);
         gst_message_unref(message);
+	videoContextSet = true;
         return GST_BUS_DROP;
 
     } else if (gst_is_video_overlay_prepare_window_handle_message(message)) {
