@@ -8,17 +8,5 @@ SRC_URI = "${KERNEL_SRC};branch=${KERNEL_BRANCH} \
            "
 
 KERNEL_BRANCH = "somlabs_imx_5.4.24_2.1.0"
-SRCREV = "44bf2046fae8c84d3f8a7c4cd2a949d71c3e33b9"
+SRCREV = "d0ce74ff14da6634880b70698f17dd6efeb2816e"
 
-IMX_KERNEL_CONFIG_AARCH32_visioncb-6ull-std = "visionsom_6ull_defconfig"
-IMX_KERNEL_CONFIG_AARCH64_visionsom-8mm-cb = "visionsom_8mm_defconfig"
-
-do_copy_defconfig_append_visionsom-8mm-cb () {
-        cp ${WORKDIR}/visionsom_8mm_defconfig ${WORKDIR}/defconfig          
-        cp ${WORKDIR}/visionsom_8mm_defconfig ${WORKDIR}/build/.config
-}
-
-do_copy_defconfig_append_visioncb-6ull-std () {
-        cp ${WORKDIR}/visionsom_6ull_defconfig ${WORKDIR}/defconfig          
-        cp ${WORKDIR}/visionsom_6ull_defconfig ${WORKDIR}/build/.config
-}
