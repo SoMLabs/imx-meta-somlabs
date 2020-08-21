@@ -54,6 +54,7 @@ bunzip2 -dkf fsl-image-validation-imx-<SELECTED_MACHINE>.sdcard.bz2
 sudo dd if=fsl-image-validation-imx-<SELECTED_MACHINE>.sdcard of=/dev/sdX bs=1M
 ```
 
-The instruction for the eMMC memory image installation may be found on the following wiki page:
+The instruction for the eMMC memory image installation may be found on the following wiki pages:
 
-https://wiki.somlabs.com/index.php/Writing_system_image_to_eMMC_memory
+* VisionSOM-6ULL: https://wiki.somlabs.com/index.php/Writing_VisionSOM-6ULL_system_image_to_eMMC_memory
+* VisionSOM-8MM: https://wiki.somlabs.com/index.php/Writing_VisionSOM-8MM_system_image_to_eMMC_memory
