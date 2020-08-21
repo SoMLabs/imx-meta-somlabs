@@ -11,6 +11,8 @@ UBOOT_CONFIG ??= "sd"
 UBOOT_CONFIG[sd] = "visionsom_8mm_defconfig,sdcard"
 SPL_BINARY = "spl/u-boot-spl.bin"
 
+IMX_KERNEL_CONFIG_AARCH64 = "visionsom_8mm_defconfig"
+
 DDR_FIRMWARE_NAME = "lpddr4_pmu_train_1d_imem.bin lpddr4_pmu_train_1d_dmem.bin lpddr4_pmu_train_2d_imem.bin lpddr4_pmu_train_2d_dmem.bin"
 
 UBOOT_DTB_NAME = "visionsom-8mm.dtb"
