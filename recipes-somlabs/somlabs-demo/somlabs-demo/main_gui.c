@@ -20,13 +20,25 @@ char* ledPath;
 
 static void on_about_to_finish(GstElement* playbin, gpointer user_data)
 {
-  g_object_set(playbin, "uri", VIDEO_URI, NULL);
+    g_object_set(playbin, "uri", VIDEO_URI, NULL);
+}
+
+gboolean gst_is_wayland_display_handle_need_context_message(GstMessage * msg)
+{
+    const gchar *type = NULL;
+
+    g_return_val_if_fail (GST_IS_MESSAGE (msg), FALSE);
+
+    if (GST_MESSAGE_TYPE (msg) == GST_MESSAGE_NEED_CONTEXT &&
+        gst_message_parse_context_type (msg, &type)) {
+        return !g_strcmp0 (type, "GstWaylandDisplayHandleContextType");
+  }
+
+  return FALSE;
 }
 
 static GstBusSyncReply bus_sync_handler(GstBus* bus, GstMessage* message, gpointer user_data)
 {
-    static bool context_set = false;
-
     if(gst_is_wayland_display_handle_need_context_message(message) && !videoContextSet) {
         GstContext* context = NULL;
         GdkDisplay* display = NULL;
@@ -34,11 +46,15 @@ static GstBusSyncReply bus_sync_handler(GstBus* bus, GstMessage* message, gpoint
 
         display = gtk_widget_get_display(videoWidget);
         display_handle = gdk_wayland_display_get_wl_display(display);
-        context = gst_wayland_display_handle_context_new(display_handle);
+
+        context = gst_context_new("GstWaylandDisplayHandleContextType", TRUE);
+        gst_structure_set (gst_context_writable_structure (context),
+             "handle", G_TYPE_POINTER, display_handle, NULL);
+
         gst_element_set_context(GST_ELEMENT(GST_MESSAGE_SRC(message)), context);
-	gst_message_unref(context);
+        gst_context_unref(context);
         gst_message_unref(message);
-	videoContextSet = true;
+        videoContextSet = true;
         return GST_BUS_DROP;
 
     } else if (gst_is_video_overlay_prepare_window_handle_message(message)) {
@@ -55,8 +71,6 @@ static GstBusSyncReply bus_sync_handler(GstBus* bus, GstMessage* message, gpoint
         gst_video_overlay_set_window_handle(overlay, (guintptr)window_handle);
         gst_video_overlay_set_render_rectangle(overlay, allocation.x, allocation.y,
             allocation.width, allocation.height);
-
-        gst_element_set_state(pipeline, GST_STATE_PLAYING);
 
         gst_message_unref(message);
         return GST_BUS_DROP;
@@ -76,7 +90,7 @@ void startPlay(char* filePath) {
     gst_bus_set_sync_handler(bus, bus_sync_handler, NULL, NULL);
     gst_object_unref(bus);
 
-    gst_element_set_state(pipeline, GST_STATE_PAUSED);
+    gst_element_set_state(pipeline, GST_STATE_PLAYING);
 }
 
 gboolean timerTimeout(gpointer user_data) 
