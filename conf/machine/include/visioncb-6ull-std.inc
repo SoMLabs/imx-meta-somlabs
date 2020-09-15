@@ -9,8 +9,6 @@ include conf/machine/include/tune-cortexa7.inc
 UBOOT_CONFIG ??= "sd"
 UBOOT_CONFIG[sd] = "visionsom_6ull_defconfig,sdcard"
 
-IMX_KERNEL_CONFIG_AARCH32 = "visionsom_6ull_defconfig"
-
 UBOOT_DTB_NAME = "visionsom-6ull.dtb"
 
 IMAGE_BOOT_FILES = " \
