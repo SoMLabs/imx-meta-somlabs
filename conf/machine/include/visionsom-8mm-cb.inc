@@ -13,7 +13,7 @@ SPL_BINARY = "spl/u-boot-spl.bin"
 
 DDR_FIRMWARE_NAME = "lpddr4_pmu_train_1d_imem.bin lpddr4_pmu_train_1d_dmem.bin lpddr4_pmu_train_2d_imem.bin lpddr4_pmu_train_2d_dmem.bin"
 
-UBOOT_DTB_NAME = "visionsom-8mm.dtb"
+UBOOT_DTB_NAME = "imx8mm-visionsom.dtb"
 
 IMXBOOT_TARGETS = "flash_evk"
 

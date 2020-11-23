@@ -1,14 +1,13 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-LOCALVERSION = "-lts-${KERNEL_BRANCH}"
 KERNEL_SRC = "git://github.com/SoMLabs/somlabs-linux-imx.git;protocol=http"
 SRC_URI = "${KERNEL_SRC};branch=${KERNEL_BRANCH} \
            "
 
 KERNEL_BRANCH = "somlabs_imx_5.4.24_2.1.0"
-SRCREV = "9f50887d89566685f832f4b25103ed2211bef2f7"
+SRCREV = "f6b7d6c558d3c775425aff479530b67552c7664a"
 
-addtask copy_somlabs_defconfig after do_patch copy_defconfig before do_preconfigure
+addtask copy_somlabs_defconfig after do_patch do_copy_defconfig before do_preconfigure
 do_copy_somlabs_defconfig () {
 }
 

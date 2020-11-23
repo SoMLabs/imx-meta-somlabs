@@ -1,11 +1,11 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 UBOOT_SRC = "git://github.com/SoMLabs/somlabs-uboot-imx.git;protocol=https"
-SRCBRANCH = "somlabs-lf-5.4.y_v2019.04"
+SRCBRANCH = "somlabs-imx_v2020.04_5.4.24_2.1.0"
 SRC_URI = "${UBOOT_SRC};branch=${SRCBRANCH} \
            file://splash.bmp \
-          "
-SRCREV = "3d0c1acbcba88fd79c3d5c854593401510bcdb82"
+           "
+SRCREV = "40158a769edfb177ea16e1e69cd3c1341c7659b8"
 
 
 do_compile_prepend_visioncb-6ull-std() {
