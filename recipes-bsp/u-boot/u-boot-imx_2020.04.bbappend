@@ -5,8 +5,8 @@ SRCBRANCH = "somlabs-imx_v2020.04_5.4.24_2.1.0"
 SRC_URI = "${UBOOT_SRC};branch=${SRCBRANCH} \
            file://splash.bmp \
            "
-SRCREV = "40158a769edfb177ea16e1e69cd3c1341c7659b8"
 
+SRCREV = "3dfddc263686763772e6d3e8ba570df52407074b"
 
 do_compile_prepend_visioncb-6ull-std() {
         sed -i "s/setfdtfile=setenv fdt_file somlabs-\${board}\${fdt_suffix}.dtb/setfdtfile=setenv fdt_file ${KERNEL_DEVICETREE}/g" ${S}/include/configs/visionsom_6ull.h
