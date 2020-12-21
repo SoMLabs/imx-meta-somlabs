@@ -11,6 +11,8 @@ UBOOT_CONFIG[sd] = "visionsom_6ull_defconfig,sdcard"
 
 UBOOT_DTB_NAME = "imx6ull-visionsom.dtb"
 
+PREFERRED_VERSION_u-boot-imx = "2019.04"
+
 IMAGE_BOOT_FILES = " \
 	${KERNEL_IMAGETYPE} \
 	${@make_dtb_boot_files(d)} \
