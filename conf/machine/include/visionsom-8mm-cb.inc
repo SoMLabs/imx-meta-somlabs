@@ -15,6 +15,8 @@ DDR_FIRMWARE_NAME = "lpddr4_pmu_train_1d_imem.bin lpddr4_pmu_train_1d_dmem.bin l
 
 UBOOT_DTB_NAME = "imx8mm-visionsom.dtb"
 
+PREFERRED_VERSION_u-boot-imx = "2020.04"
+
 IMXBOOT_TARGETS = "flash_evk"
 
 SERIAL_CONSOLES = "115200;ttymxc3"
