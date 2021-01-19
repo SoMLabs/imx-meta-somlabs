@@ -4,8 +4,8 @@ KERNEL_SRC = "git://github.com/SoMLabs/somlabs-linux-imx.git;protocol=http"
 SRC_URI = "${KERNEL_SRC};branch=${KERNEL_BRANCH} \
            "
 
-KERNEL_BRANCH = "somlabs_imx_5.4.24_2.1.0"
-SRCREV = "239a5345740fc58739950fc11b5153440754a9c7"
+KERNEL_BRANCH = "somlabs_imx_5.4.47_2.2.0"
+SRCREV = "f9e2e8942fc6da24313a01b66003fcb9d3c852d4"
 
 addtask copy_somlabs_defconfig after do_patch do_copy_defconfig before do_preconfigure
 do_copy_somlabs_defconfig () {

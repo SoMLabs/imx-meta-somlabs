@@ -19,7 +19,7 @@ The summary of required steps including the meta-somlabs layer is shown below:
 ```shell
 mkdir imx-yocto-bsp
 cd imx-yocto-bsp
-repo init -u https://source.codeaurora.org/external/imx/imx-manifest -b imx-linux-zeus -m imx-5.4.24-2.1.0.xml
+repo init -u https://source.codeaurora.org/external/imx/imx-manifest -b imx-linux-zeus -m imx-5.4.47-2.2.0.xml
 repo sync
 cd sources
 git clone -b zeus https://github.com/SoMLabs/imx-meta-somlabs.git meta-somlabs
@@ -38,7 +38,7 @@ System building may be configured for one of the available machine configuration
 * visioncb-6ull-std-emmc - VisionCB-6ULL-STD board with eMMC VisionSOM-6ULL version
 * visioncb-6ull-std-sd-btwifi - VisionCB-6ULL-STD board with SD-card and wireless modem VisionSOM-6ULL version
 * visioncb-6ull-std-sd - VisionCB-6ULL-STD board with SD-card VisionSOM-6ULL version
-* visionsom-8mm-cb-std - VisionCB-8M-STD board with SD-card and wireless modem VisionSOM-8MM version
+* visionsom-8mm-cb - VisionCB-8M board family with VisionSOM-8Mmini modules
 
 System building may be started by the following commands:
 
@@ -47,11 +47,11 @@ DISTRO=fsl-imx-wayland MACHINE=<SELECTED_MACHINE> source imx-setup-release.sh -b
 bitbake fsl-image-validation-imx
 ```
 
-The system image is located in the fsl-image-validation-imx-<SELECTED_MACHINE>.sdcard.bz2 file in the tmp/deploy/images/<SELECTED_MACHINE> directory. It should be extracted and installed on a SD-card:
+The system image is located in the fsl-image-validation-imx-<SELECTED_MACHINE>.wic.bz2 file in the tmp/deploy/images/<SELECTED_MACHINE> directory. It should be extracted and installed on a SD-card:
 
 ```shell
-bunzip2 -dkf fsl-image-validation-imx-<SELECTED_MACHINE>.sdcard.bz2 
-sudo dd if=fsl-image-validation-imx-<SELECTED_MACHINE>.sdcard of=/dev/sdX bs=1M
+bunzip2 -dkf fsl-image-validation-imx-<SELECTED_MACHINE>.wic.bz2 
+sudo dd if=fsl-image-validation-imx-<SELECTED_MACHINE>.wic of=/dev/sdX bs=1M
 ```
 
 The instruction for the eMMC memory image installation may be found on the following wiki pages:
