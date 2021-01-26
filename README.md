@@ -6,7 +6,7 @@ Meta-somlabs is a layer providing the VisionSOM-6ULL module and VisionCB-6ULL-ST
 
 ## System image
 
-This layer should be used in order to build the fsl-image-validation-imx image. It includes the SoMLabs demo application using the GTK and GStreamer libraries.
+This layer should be used in order to build the imx-image-multimedia image. It includes the SoMLabs demo application using the GTK and GStreamer libraries.
 
 ## Building the system image
 
@@ -44,14 +44,14 @@ System building may be started by the following commands:
 
 ```shell
 DISTRO=fsl-imx-wayland MACHINE=<SELECTED_MACHINE> source imx-setup-release.sh -b <BUILD_DIRECTORY>
-bitbake fsl-image-validation-imx
+bitbake imx-image-multimedia
 ```
 
-The system image is located in the fsl-image-validation-imx-<SELECTED_MACHINE>.wic.bz2 file in the tmp/deploy/images/<SELECTED_MACHINE> directory. It should be extracted and installed on a SD-card:
+The system image is located in the imx-image-multimedia-<SELECTED_MACHINE>.wic.bz2 file in the tmp/deploy/images/<SELECTED_MACHINE> directory. It should be extracted and installed on a SD-card:
 
 ```shell
-bunzip2 -dkf fsl-image-validation-imx-<SELECTED_MACHINE>.wic.bz2 
-sudo dd if=fsl-image-validation-imx-<SELECTED_MACHINE>.wic of=/dev/sdX bs=1M
+bunzip2 -dkf imx-image-multimedia-<SELECTED_MACHINE>.wic.bz2 
+sudo dd if=imx-image-multimedia-<SELECTED_MACHINE>.wic of=/dev/sdX bs=1M
 ```
 
 The instruction for the eMMC memory image installation may be found on the following wiki pages:
