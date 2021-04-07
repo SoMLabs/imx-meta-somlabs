@@ -6,11 +6,7 @@ SRC_URI = "${UBOOT_SRC};branch=${SRCBRANCH} \
            file://splash.bmp \
            "
 
-SRCREV = "07d1e783931331bf7192079f798cc64c4b7cc1a8"
-
-do_compile_prepend_visioncb-6ull-std() {
-        sed -i "s/setfdtfile=setenv fdt_file somlabs-\${board}\${fdt_suffix}.dtb/setfdtfile=setenv fdt_file ${KERNEL_DEVICETREE}/g" ${S}/include/configs/visionsom_6ull.h
-}
+SRCREV = "92af50e418abb281518684b3be893e0d2859b197"
 
 do_install_append_visioncb-6ull-std() {
         install -d ${DEPLOY_DIR_IMAGE}

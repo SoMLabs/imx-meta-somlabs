@@ -34,10 +34,7 @@ echo "LICENSE_FLAGS_WHITELIST = \"commercial\"" >> $BUILD_DIR/conf/local.conf
 
 System building may be configured for one of the available machine configurations:
 
-* visioncb-6ull-std-emmc-btwifi - VisionCB-6ULL-STD board with eMMC and wireless modem VisionSOM-6ULL version
-* visioncb-6ull-std-emmc - VisionCB-6ULL-STD board with eMMC VisionSOM-6ULL version
-* visioncb-6ull-std-sd-btwifi - VisionCB-6ULL-STD board with SD-card and wireless modem VisionSOM-6ULL version
-* visioncb-6ull-std-sd - VisionCB-6ULL-STD board with SD-card VisionSOM-6ULL version
+* visioncb-6ull-std - VisionCB-6ULL-STD board with VisionSOM-6ULL modules 
 * visionsom-8mm-cb - VisionCB-8M board family with VisionSOM-8Mmini modules
 
 System building may be started by the following commands:
