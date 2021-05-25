@@ -16,6 +16,11 @@ do_copy_somlabs_defconfig_append_visionsom-8mm-cb () {
     cp ${S}/arch/arm64/configs/visionsom_8mm_defconfig ${B}/../defconfig
 }
 
+do_copy_somlabs_defconfig_append_visionsbc-8mmini () {
+    cp ${S}/arch/arm64/configs/visionsom_8mm_defconfig ${B}/.config
+    cp ${S}/arch/arm64/configs/visionsom_8mm_defconfig ${B}/../defconfig
+}
+
 do_copy_somlabs_defconfig_append_visioncb-6ull-std () {
     cp ${S}/arch/arm/configs/visionsom_6ull_defconfig ${B}/.config
     cp ${S}/arch/arm/configs/visionsom_6ull_defconfig ${B}/../defconfig

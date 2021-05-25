@@ -36,6 +36,7 @@ System building may be configured for one of the available machine configuration
 
 * visioncb-6ull-std - VisionCB-6ULL-STD board with VisionSOM-6ULL modules 
 * visionsom-8mm-cb - VisionCB-8M board family with VisionSOM-8Mmini modules
+* visionsbc-8mmini - VisionSBC-8Mmini board
 
 System building may be started by the following commands:
 
