@@ -7,4 +7,3 @@ PACKAGE_INSTALL_remove += " \
     "
 
 IMAGE_FEATURES_remove = "splash"
-#PACKAGE_EXCLUDE += "connman packagegroup-core-tools-testapps"
