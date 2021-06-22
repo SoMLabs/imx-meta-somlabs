@@ -16,15 +16,17 @@ SRC_URI = " \
     file://somlabs_demo_gui_launch_8mm.sh \
     file://somlabs_demo_gui_launch_6ull.sh \
     file://main_gui.c \
-    file://background_1280_720.jpg \
-    file://background_800_480.jpg \
+    file://background_8mmini.jpg \
+    file://background_sbc_8mmini.jpg \
+    file://background_6ull.jpg \
     file://gui_test_1280_720.glade \
+    file://gui_test_1280_720_no_led.glade \
     file://gui_test_800_480.glade \
     file://somlabs.png \
     file://theme.css \
     "
 
-EXAMPLE_VIDEO_URL = "http://ftp.somlabs.com/VisionSOM-6ULL/SoMLabs-iMX6ULL-vdemo-2020-06.mp4"
+EXAMPLE_VIDEO_URL = "http://ftp.somlabs.com/misc/example_video.mp4"
 
 S = "${WORKDIR}"
 
@@ -42,19 +44,19 @@ do_install() {
 }
 
 do_install_append_visionsom-8mm-cb() {
-    install -m 0755 background_1280_720.jpg ${D}/usr/share/somlabs-demo/background.jpg
+    install -m 0755 background_8mmini.jpg ${D}/usr/share/somlabs-demo/background.jpg
     install -m 0755 gui_test_1280_720.glade ${D}/usr/share/somlabs-demo/gui_test.glade
     install -m 0755 somlabs_demo_gui_launch_8mm.sh ${D}/usr/share/somlabs-demo/somlabs_demo_gui_launch.sh
 }
 
 do_install_append_visionsbc-8mmini() {
-    install -m 0755 background_1280_720.jpg ${D}/usr/share/somlabs-demo/background.jpg
-    install -m 0755 gui_test_1280_720.glade ${D}/usr/share/somlabs-demo/gui_test.glade
+    install -m 0755 background_sbc_8mmini.jpg ${D}/usr/share/somlabs-demo/background.jpg
+    install -m 0755 gui_test_1280_720_no_led.glade ${D}/usr/share/somlabs-demo/gui_test.glade
     install -m 0755 somlabs_demo_gui_launch_8mm.sh ${D}/usr/share/somlabs-demo/somlabs_demo_gui_launch.sh
 }
 
 do_install_append_visioncb-6ull-std() {
-    install -m 0755 background_800_480.jpg ${D}/usr/share/somlabs-demo/background.jpg
+    install -m 0755 background_6ull.jpg ${D}/usr/share/somlabs-demo/background.jpg
     install -m 0755 gui_test_800_480.glade ${D}/usr/share/somlabs-demo/gui_test.glade
     install -m 0755 somlabs_demo_gui_launch_6ull.sh ${D}/usr/share/somlabs-demo/somlabs_demo_gui_launch.sh
 }
