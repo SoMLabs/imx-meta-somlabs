@@ -5,7 +5,7 @@ SRC_URI = "${KERNEL_SRC};branch=${KERNEL_BRANCH} \
            "
 
 KERNEL_BRANCH = "somlabs_imx_5.4.47_2.2.0"
-SRCREV = "4345a5668785b7273f40f2b9a2b542a9549c800c"
+SRCREV = "5f8e4bf4262cb60897c79559cccb7272be24596d"
 
 addtask copy_somlabs_defconfig after do_patch do_copy_defconfig before do_preconfigure
 do_copy_somlabs_defconfig () {
