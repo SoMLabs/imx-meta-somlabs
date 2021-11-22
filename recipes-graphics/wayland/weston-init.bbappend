@@ -25,3 +25,7 @@ do_install_append_visionsbc-8mmini() {
 do_install_append_visioncb-6ull-std() {
     install -m 0644 ${WORKDIR}/weston_6ull.ini ${D}${sysconfdir}/xdg/weston/weston.ini
 }
+
+do_install_append_starsom-cb-6ull() {
+    install -m 0644 ${WORKDIR}/weston_6ull.ini ${D}${sysconfdir}/xdg/weston/weston.ini
+}

@@ -61,4 +61,10 @@ do_install_append_visioncb-6ull-std() {
     install -m 0755 somlabs_demo_gui_launch_6ull.sh ${D}/usr/share/somlabs-demo/somlabs_demo_gui_launch.sh
 }
 
+do_install_append_starsom-cb-6ull() {
+    install -m 0755 background_6ull.jpg ${D}/usr/share/somlabs-demo/background.jpg
+    install -m 0755 gui_test_800_480.glade ${D}/usr/share/somlabs-demo/gui_test.glade
+    install -m 0755 somlabs_demo_gui_launch_6ull.sh ${D}/usr/share/somlabs-demo/somlabs_demo_gui_launch.sh
+}
+
 FILES_${PN} = " /usr/share/somlabs-demo/ "

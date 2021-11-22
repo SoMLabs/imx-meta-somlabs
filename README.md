@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Meta-somlabs is a layer providing the VisionSOM modules and VisionCB carrier boards hardware support for Yocto-based NXP Linux system.
+Meta-somlabs is a layer providing the SoMLabs modules and carrier boards hardware support for Yocto-based NXP Linux system.
 
 ## System image
 
@@ -28,6 +28,7 @@ System building may be configured for one of the available machine configuration
 * visioncb-6ull-std - VisionCB-6ULL-STD board with VisionSOM-6ULL modules 
 * visionsom-8mm-cb - VisionCB-8M board family with VisionSOM-8Mmini modules
 * visionsbc-8mmini - VisionSBC-8Mmini board
+* starsom-cb-6ull - StarCB-6ULL board with StarSOM-6ULL modules
 
 System building may be started by the following commands:
 
