@@ -1,4 +1,4 @@
-DESCRIPTION = "This is the basic image with wayland/xwayland environment"
+DESCRIPTION = "This is the basic image for SoMLabs boards and modules"
 
 inherit core-image
 
@@ -15,11 +15,11 @@ IMAGE_FEATURES += " \
 
 IMAGE_INSTALL += " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'x11 wayland', 'weston-xwayland xterm', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'somlabs-demo', '', d)} \
     firmwared \
     packagegroup-core-full-cmdline \
     packagegroup-imx-core-tools \
     packagegroup-imx-security \
     packagegroup-fsl-gstreamer1.0 \
     packagegroup-fsl-gstreamer1.0-full \
-    somlabs-demo \
 "

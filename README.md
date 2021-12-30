@@ -29,11 +29,17 @@ System building may be configured for one of the available machine configuration
 * visionsom-8mm-cb - VisionCB-8M board family with VisionSOM-8Mmini modules
 * visionsbc-8mmini - VisionSBC-8Mmini board
 * starsom-cb-6ull - StarCB-6ULL board with StarSOM-6ULL modules
+* starsbc-6ull - StarSBC-6ULL board with or without the COMM shield
+
+The following system distributions were tested on SoMLabs modules:
+
+* fsl-imx-fb - distribution without graphical environment
+* fsl-imx-xwayland - distribution with wayland and x11 enabled
 
 System building may be started by the following commands:
 
 ```shell
-DISTRO=fsl-imx-xwayland MACHINE=<SELECTED_MACHINE> source imx-somlabs-setup-release.sh -b <BUILD_DIRECTORY>
+DISTRO=<SELECTED_DISTRIBUTION> MACHINE=<SELECTED_MACHINE> source imx-somlabs-setup-release.sh -b <BUILD_DIRECTORY>
 bitbake somlabs-image
 ```
 
