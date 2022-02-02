@@ -3,8 +3,8 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 KERNEL_SRC = "git://github.com/SoMLabs/somlabs-linux-imx.git;protocol=http"
 SRC_URI = "${KERNEL_SRC};branch=${KERNEL_BRANCH}"
 
-KERNEL_BRANCH = "somlabs_imx_5.10.52_2.1.0"
-SRCREV = "ca1817238b9717a0e094990085afd4eee38e1bd2"
+KERNEL_BRANCH = "somlabs_imx_5.10.72-2.2.0"
+SRCREV = "748a5a891f1e2efedaa4a6a0d34dcda581dcdaf5"
 
 IMX_KERNEL_CONFIG_AARCH64_visionsom-8mm-cb = "somlabs_8mm_defconfig"
 IMX_KERNEL_CONFIG_AARCH64_visionsbc-8mmini = "somlabs_8mm_defconfig"

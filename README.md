@@ -19,7 +19,7 @@ The summary of required steps including the meta-somlabs layer is shown below:
 ```shell
 mkdir imx-yocto-bsp
 cd imx-yocto-bsp
-repo init -u https://github.com/SoMLabs/imx-meta-somlabs -b hardknott -m imx-somlabs-5.10.52-2.1.0.xml
+repo init -u https://github.com/SoMLabs/imx-meta-somlabs -b hardknott -m imx-somlabs-5.10.72-2.2.0.xml
 repo sync
 ```
 
