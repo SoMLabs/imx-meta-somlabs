@@ -20,7 +20,8 @@ char* ledPath;
 
 static void on_about_to_finish(GstElement* playbin, gpointer user_data)
 {
-    g_object_set(playbin, "uri", VIDEO_URI, NULL);
+    gst_element_seek(pipeline, 1.0, GST_FORMAT_TIME, (GstSeekFlags)GST_SEEK_FLAG_FLUSH,
+                     GST_SEEK_TYPE_SET, 0, GST_SEEK_TYPE_NONE, GST_CLOCK_TIME_NONE);
 }
 
 gboolean gst_is_wayland_display_handle_need_context_message(GstMessage * msg)
@@ -74,13 +75,14 @@ static GstBusSyncReply bus_sync_handler(GstBus* bus, GstMessage* message, gpoint
 
         gst_message_unref(message);
         return GST_BUS_DROP;
+
     }
 
     return GST_BUS_PASS;
 }
 
 void startPlay(char* filePath) {
-    pipeline = gst_parse_launch("playbin video-sink=waylandsink", NULL);
+    pipeline = gst_parse_launch("playbin video-sink=waylandsink flags=0x51", NULL);
     g_object_set(pipeline, "uri", VIDEO_URI, NULL);
 
     g_signal_connect (pipeline, "about-to-finish", G_CALLBACK(on_about_to_finish), NULL);
