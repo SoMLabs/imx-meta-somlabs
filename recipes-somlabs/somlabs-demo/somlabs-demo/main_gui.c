@@ -82,7 +82,7 @@ static GstBusSyncReply bus_sync_handler(GstBus* bus, GstMessage* message, gpoint
 }
 
 void startPlay(char* filePath) {
-    pipeline = gst_parse_launch("playbin video-sink=waylandsink flags=0x51", NULL);
+    pipeline = gst_parse_launch("playbin video-sink=waylandsink flags=0x1", NULL);
     g_object_set(pipeline, "uri", VIDEO_URI, NULL);
 
     g_signal_connect (pipeline, "about-to-finish", G_CALLBACK(on_about_to_finish), NULL);
