@@ -22,6 +22,10 @@ do_install_append_visionsbc-8mmini() {
     install -m 0644 ${WORKDIR}/weston_8mm.ini ${D}${sysconfdir}/xdg/weston/weston.ini
 }
 
+do_install_append_spacesom-8mplus-cb() {
+    install -m 0644 ${WORKDIR}/weston_8mm.ini ${D}${sysconfdir}/xdg/weston/weston.ini
+}
+
 do_install_append_visioncb-6ull-std() {
     install -m 0644 ${WORKDIR}/weston_6ull.ini ${D}${sysconfdir}/xdg/weston/weston.ini
 }
