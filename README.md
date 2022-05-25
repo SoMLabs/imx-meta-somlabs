@@ -19,7 +19,7 @@ The summary of required steps including the meta-somlabs layer is shown below:
 ```shell
 mkdir imx-yocto-bsp
 cd imx-yocto-bsp
-repo init -u https://github.com/SoMLabs/imx-meta-somlabs -b hardknott -m imx-somlabs-5.10.72-2.2.0.xml
+repo init -u https://github.com/SoMLabs/imx-meta-somlabs -b honister -m imx-somlabs-5.15.5-1.0.0.xml
 repo sync
 ```
 
@@ -34,7 +34,7 @@ System building may be configured for one of the available machine configuration
 
 The following system distributions were tested on SoMLabs modules:
 
-* fsl-imx-fb - distribution without graphical environment
+* fsl-imx-fb - distribution without graphical environment for 6ULL modules
 * fsl-imx-xwayland - distribution with wayland and x11 enabled
 
 System building may be started by the following commands:

@@ -43,34 +43,34 @@ do_install() {
     wget ${EXAMPLE_VIDEO_URL} -O ${D}/usr/share/somlabs-demo/example_video.mp4
 }
 
-do_install_append_visionsom-8mm-cb() {
+do_install:append:visionsom-8mm-cb() {
     install -m 0755 background_8mmini.jpg ${D}/usr/share/somlabs-demo/background.jpg
     install -m 0755 gui_test_1280_720.glade ${D}/usr/share/somlabs-demo/gui_test.glade
     install -m 0755 somlabs_demo_gui_launch_8mm.sh ${D}/usr/share/somlabs-demo/somlabs_demo_gui_launch.sh
 }
 
-do_install_append_visionsbc-8mmini() {
+do_install:append:visionsbc-8mmini() {
     install -m 0755 background_sbc_8mmini.jpg ${D}/usr/share/somlabs-demo/background.jpg
     install -m 0755 gui_test_1280_720_no_led.glade ${D}/usr/share/somlabs-demo/gui_test.glade
     install -m 0755 somlabs_demo_gui_launch_8mm.sh ${D}/usr/share/somlabs-demo/somlabs_demo_gui_launch.sh
 }
 
-do_install_append_visioncb-6ull-std() {
+do_install:append:visioncb-6ull-std() {
     install -m 0755 background_6ull.jpg ${D}/usr/share/somlabs-demo/background.jpg
     install -m 0755 gui_test_800_480.glade ${D}/usr/share/somlabs-demo/gui_test.glade
     install -m 0755 somlabs_demo_gui_launch_6ull.sh ${D}/usr/share/somlabs-demo/somlabs_demo_gui_launch.sh
 }
 
-do_install_append_starsom-cb-6ull() {
+do_install:append:starsom-cb-6ull() {
     install -m 0755 background_6ull.jpg ${D}/usr/share/somlabs-demo/background.jpg
     install -m 0755 gui_test_800_480.glade ${D}/usr/share/somlabs-demo/gui_test.glade
     install -m 0755 somlabs_demo_gui_launch_6ull.sh ${D}/usr/share/somlabs-demo/somlabs_demo_gui_launch.sh
 }
 
-do_install_append_spacesom-8mplus-cb() {
+do_install:append:spacesom-8mplus-cb() {
     install -m 0755 background_8mmini.jpg ${D}/usr/share/somlabs-demo/background.jpg
     install -m 0755 gui_test_1280_720.glade ${D}/usr/share/somlabs-demo/gui_test.glade
     install -m 0755 somlabs_demo_gui_launch_8mm.sh ${D}/usr/share/somlabs-demo/somlabs_demo_gui_launch.sh
 }
 
-FILES_${PN} = " /usr/share/somlabs-demo/ "
+FILES:${PN} = " /usr/share/somlabs-demo/ "

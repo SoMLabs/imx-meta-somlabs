@@ -40,7 +40,7 @@ do_install() {
     sed -i 's/murata/	/g' ${D}/lib/firmware/nxp/wifi_mod_para.conf
 }
 
-FILES_${PN} = "\
+FILES:${PN} = "\
     ${sbindir}/crda \
     ${sbindir}/regdbdump \
     ${libdir}/libreg.so \
