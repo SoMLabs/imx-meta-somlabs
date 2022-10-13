@@ -24,9 +24,10 @@ SRC_URI = " \
     file://gui_test_800_480.glade \
     file://somlabs.png \
     file://theme.css \
+    http://ftp.somlabs.com/misc/example_video.mp4 \
     "
 
-EXAMPLE_VIDEO_URL = "http://ftp.somlabs.com/misc/example_video.mp4"
+SRC_URI[sha256sum] = "6e10c996cce94f6c1f6ba7ef1af7bb7066e30267a8cc1a3123f5bd9897e1a2b5"
 
 S = "${WORKDIR}"
 
@@ -40,7 +41,7 @@ do_install() {
     install -m 0755 somlabs_demo_gui ${D}/usr/share/somlabs-demo/
     install -m 0755 somlabs.png ${D}/usr/share/somlabs-demo/
     install -m 0755 theme.css ${D}/usr/share/somlabs-demo/
-    wget ${EXAMPLE_VIDEO_URL} -O ${D}/usr/share/somlabs-demo/example_video.mp4
+    install -m 0755 example_video.mp4 ${D}/usr/share/somlabs-demo/example_video.mp4
 }
 
 do_install:append:visionsom-8mm-cb() {

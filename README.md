@@ -19,7 +19,7 @@ The summary of required steps including the meta-somlabs layer is shown below:
 ```shell
 mkdir imx-yocto-bsp
 cd imx-yocto-bsp
-repo init -u https://github.com/SoMLabs/imx-meta-somlabs -b honister -m imx-somlabs-5.15.5-1.0.0.xml
+repo init -u https://github.com/SoMLabs/imx-meta-somlabs -b kirkstone -m imx-somlabs-5.15.52-2.1.0.xml
 repo sync
 ```
 
@@ -44,10 +44,10 @@ DISTRO=<SELECTED_DISTRIBUTION> MACHINE=<SELECTED_MACHINE> source imx-somlabs-set
 bitbake somlabs-image
 ```
 
-The system image is located in the somlabs-image-<SELECTED_MACHINE>.wic.bz2 file in the tmp/deploy/images/<SELECTED_MACHINE> directory. It should be extracted and installed on a SD-card:
+The system image is located in the somlabs-image-<SELECTED_MACHINE>.wic.zst file in the tmp/deploy/images/<SELECTED_MACHINE> directory. It should be extracted and installed on a SD-card:
 
 ```shell
-bunzip2 -dkf somlabs-image-<SELECTED_MACHINE>.wic.bz2 
+unzstd somlabs-image-<SELECTED_MACHINE>.wic.zst 
 sudo dd if=somlabs-image-<SELECTED_MACHINE>.wic of=/dev/sdX bs=1M
 ```
 
