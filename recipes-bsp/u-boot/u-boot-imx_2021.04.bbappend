@@ -6,7 +6,7 @@ SRC_URI = "${UBOOT_SRC};branch=${SRCBRANCH} \
            file://splash.bmp \
            "
 
-SRCREV = "8ea3659e61d4ff74ca4f865d7eb40638d73a91db"
+SRCREV = "604f0a7a6c99af88cf5ad32a26a80cbb7284c866"
 
 do_install:append:visioncb-6ull-std() {
         install -d ${DEPLOY_DIR_IMAGE}
