@@ -1,0 +1,9 @@
+[Unit]
+Description=SoMLabs weston pre-initialization service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/somlabs-weston-init.sh
+
+[Install]
+WantedBy=weston.service
