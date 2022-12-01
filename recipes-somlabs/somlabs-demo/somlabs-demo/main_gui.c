@@ -6,6 +6,8 @@
 #include <gst/video/videooverlay.h>
 
 #define VIDEO_URI "file:///usr/share/somlabs-demo/example_video.mp4"
+#define VIDEO_WIDTH 600
+#define VIDEO_HEIGHT 360
 
 GstElement* pipeline;
 GtkWidget* videoWidget;
@@ -124,68 +126,6 @@ gboolean timerTimeout(gpointer user_data)
     return true;
 }
 
-int main(int argc, char* argv[])
-{
-    GtkBuilder* builder; 
-    GtkWidget* window;
-
-    if(argc != 2) {
-        printf("Usage: somlabs_demo_gui LED_FILE_PATH\n");
-	return 1;
-    }
-
-    ledPath = argv[1];
-
-    gtk_init(&argc, &argv);
-    gst_init(&argc, &argv);
-
-    GtkCssProvider* cssProvider = gtk_css_provider_new();
-    gtk_css_provider_load_from_path(cssProvider,"/usr/share/somlabs-demo/theme.css",NULL);
-
-    builder = gtk_builder_new_from_file("/usr/share/somlabs-demo/gui_test.glade");
-    if(builder == NULL)
-    {
-        g_error("Cannot open builder file\n");
-	return 1;
-    }
-
-    GObject* obj = gtk_builder_get_object(builder, "mainWindow");
-    window = GTK_WIDGET(obj);
-
-    obj = gtk_builder_get_object(builder, "videoFrame");
-    videoWidget = GTK_WIDGET(obj);
-
-    obj = gtk_builder_get_object(builder, "cpuUsageLabel");
-    usageLabel = GTK_LABEL(obj);
-
-    gtk_style_context_add_provider_for_screen(
-        gdk_screen_get_default(), GTK_STYLE_PROVIDER(cssProvider), GTK_STYLE_PROVIDER_PRIORITY_USER);
-
-    gtk_builder_connect_signals(builder, NULL);
-
-    g_object_unref(builder);
-
-    gtk_widget_show(window);                
-
-    startPlay(NULL);
-
-    char cpu[8];
-    FILE *f = fopen("/proc/stat", "rt");
-    fscanf(f, "%s %lu %lu %lu %lu", cpu, &time1old, &time2old, &time3old, &time4old);
-    fclose(f);
-
-    g_timeout_add_seconds(2, timerTimeout, NULL);
-
-    gtk_main();
-
-    return 0;
-}
-
-void on_window_main_destroy()
-{
-    gtk_main_quit();
-}
-
 void on_ledButton_clicked(GtkButton* button, gpointer user_data)
 {
 
@@ -193,11 +133,11 @@ void on_ledButton_clicked(GtkButton* button, gpointer user_data)
     static bool ledOn = false;
 
     if(ledOn) {
-	sprintf(ledCmd, "echo 0 > %s/brightness", ledPath);
+        sprintf(ledCmd, "echo 0 > %s/brightness", ledPath);
         ledOn = false;
         system(ledCmd);
     } else {
-	sprintf(ledCmd, "echo 1 > %s/brightness", ledPath);
+        sprintf(ledCmd, "echo 1 > %s/brightness", ledPath);
         ledOn = true;
         system(ledCmd);
     }
@@ -211,4 +151,107 @@ void on_closeButton_clicked(GtkButton* button, gpointer user_data)
 void on_mainWindow_destroy()
 {
     gtk_main_quit();
+}
+
+int main(int argc, char* argv[])
+{
+    GtkBuilder* builder; 
+    GtkWidget *button;
+
+    bool hasLed = false;
+
+    if(argc == 2) {
+        hasLed = true;
+        ledPath = argv[1];
+    }
+
+    gtk_init(&argc, &argv);
+    gst_init(&argc, &argv);
+
+    int screenWidth = gdk_screen_width();
+    int screenHeight = gdk_screen_height();
+
+    GtkCssProvider* cssProvider = gtk_css_provider_new();
+    gtk_css_provider_load_from_path(cssProvider, "/usr/share/somlabs-demo/theme.css", NULL);
+    gtk_style_context_add_provider_for_screen(
+        gdk_screen_get_default(), GTK_STYLE_PROVIDER(cssProvider), GTK_STYLE_PROVIDER_PRIORITY_USER);
+
+    GtkWidget* window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    gtk_window_set_default_size(GTK_WINDOW(window), screenWidth, screenHeight);
+    gtk_window_set_resizable(GTK_WINDOW(window), false);
+    gtk_window_set_decorated(GTK_WINDOW(window), false);
+    GtkStyleContext* context = gtk_widget_get_style_context(window);
+    gtk_style_context_add_class(context, "window_style");
+    g_signal_connect(G_OBJECT(window), "destroy", G_CALLBACK(on_mainWindow_destroy), NULL);
+
+    GtkWidget* fixedLayout = gtk_fixed_new();
+    gtk_container_add(GTK_CONTAINER(window), fixedLayout);
+
+    int videoWidth = VIDEO_WIDTH;
+    int videoHeight = VIDEO_HEIGHT;
+
+    if (screenWidth < 1000) {
+        videoWidth *= 0.8;
+	videoHeight *= 0.8;
+    }
+
+    int videoY = (screenHeight - videoHeight) * 0.1;
+    int videoX = (screenWidth - videoWidth) * 0.5;
+
+    int buttonHeight = (screenHeight - videoHeight - videoY) * 0.3;
+    int buttonWidth = screenWidth * 0.25;
+
+    int buttonY = buttonHeight + videoY + videoHeight;
+
+    int ledButtonX = 0;
+    int closeButtonX = 0;
+
+    if (hasLed) {
+        ledButtonX = screenWidth * 0.125;
+        closeButtonX = screenWidth * 0.625;
+    } else {
+        closeButtonX = screenWidth * 0.375;
+    }
+
+    if (hasLed) {
+        GtkWidget* ledButton = gtk_button_new_with_label("LED");
+        gtk_fixed_put(GTK_FIXED(fixedLayout), ledButton, ledButtonX, buttonY);
+        gtk_widget_set_size_request(ledButton, buttonWidth, buttonHeight);
+        context = gtk_widget_get_style_context(ledButton);
+        gtk_style_context_add_class(context, "button_style");
+        g_signal_connect(ledButton, "clicked", G_CALLBACK(on_ledButton_clicked), NULL);
+    }
+
+    GtkWidget* closeButton = gtk_button_new_with_label("Close");
+    gtk_fixed_put(GTK_FIXED(fixedLayout), closeButton, closeButtonX, buttonY);
+    gtk_widget_set_size_request(closeButton, buttonWidth, buttonHeight);
+    context = gtk_widget_get_style_context(closeButton);
+    gtk_style_context_add_class(context, "button_style");
+    g_signal_connect(closeButton, "clicked", G_CALLBACK(on_closeButton_clicked), window);
+
+    videoWidget = gtk_frame_new(NULL);
+    gtk_fixed_put(GTK_FIXED(fixedLayout), videoWidget, videoX, videoY);
+    gtk_widget_set_size_request(videoWidget, videoWidth, videoHeight);
+
+    GtkWidget* textLabel = gtk_label_new("CPU usage:");
+    gtk_fixed_put(GTK_FIXED(fixedLayout), textLabel, 10, 10);
+    gtk_widget_set_size_request(textLabel, 100, 40);
+    context = gtk_widget_get_style_context(textLabel);
+    gtk_style_context_add_class(context, "label_style");
+
+    usageLabel = gtk_label_new("");
+    gtk_fixed_put(GTK_FIXED(fixedLayout), usageLabel, 100, 10);
+    gtk_widget_set_size_request(usageLabel, 50, 40);
+    context = gtk_widget_get_style_context(usageLabel);
+    gtk_style_context_add_class(context, "label_style");
+
+    gtk_widget_show_all(window);
+
+    startPlay(NULL);
+
+    g_timeout_add_seconds(2, timerTimeout, NULL);
+
+    gtk_main();
+
+    return 0;
 }
