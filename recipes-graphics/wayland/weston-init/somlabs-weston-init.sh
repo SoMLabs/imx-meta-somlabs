@@ -11,7 +11,7 @@ fi
 CMDLINE="`cat /proc/device-tree/model`"
 
 case "$CMDLINE" in
-  *MIPI7-POWERTIP*)
+  *MIPI7-PH720128T003*)
     ln -s /etc/xdg/weston/weston_8m_rotated.ini $WESON_INI_FILE
     ;;
   *)
