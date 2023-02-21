@@ -153,6 +153,19 @@ void on_mainWindow_destroy()
     gtk_main_quit();
 }
 
+int getMonitorNum(char* connectorName)
+{
+    GdkScreen* screen = gdk_screen_get_default();
+    gint monitors = gdk_screen_get_n_monitors(screen);
+
+    for(int i = 0; i < monitors; i++) {
+        gchar* con = gdk_screen_get_monitor_plug_name(screen, i);
+        if(strstr(con, connectorName) > 0)
+            return i;
+    }
+    return -1;
+}
+
 int main(int argc, char* argv[])
 {
     GtkBuilder* builder; 
@@ -168,21 +181,34 @@ int main(int argc, char* argv[])
     gtk_init(&argc, &argv);
     gst_init(&argc, &argv);
 
-    int screenWidth = gdk_screen_width();
-    int screenHeight = gdk_screen_height();
+    int currentMonitorNum = 0;
+    int hdmiMonitorNum = getMonitorNum("HDMI");
+    int dsiMonitorNum = getMonitorNum("DSI");
+    if(hdmiMonitorNum >= 0)
+        currentMonitorNum = hdmiMonitorNum;
+    else if(dsiMonitorNum >= 0)
+        currentMonitorNum = dsiMonitorNum;
 
     GtkCssProvider* cssProvider = gtk_css_provider_new();
     gtk_css_provider_load_from_path(cssProvider, "/usr/share/somlabs-demo/theme.css", NULL);
     gtk_style_context_add_provider_for_screen(
         gdk_screen_get_default(), GTK_STYLE_PROVIDER(cssProvider), GTK_STYLE_PROVIDER_PRIORITY_USER);
 
+    GdkScreen* screen = gdk_screen_get_default();
     GtkWidget* window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-    gtk_window_set_default_size(GTK_WINDOW(window), screenWidth, screenHeight);
-    gtk_window_set_resizable(GTK_WINDOW(window), false);
+    gtk_window_fullscreen_on_monitor(GTK_WINDOW(window), screen, currentMonitorNum);
     gtk_window_set_decorated(GTK_WINDOW(window), false);
     GtkStyleContext* context = gtk_widget_get_style_context(window);
     gtk_style_context_add_class(context, "window_style");
     g_signal_connect(G_OBJECT(window), "destroy", G_CALLBACK(on_mainWindow_destroy), NULL);
+
+    GdkRectangle geometry = {0};
+    gdk_screen_get_monitor_geometry(screen, currentMonitorNum, &geometry);
+
+    int screenWidth = geometry.width;
+    int screenHeight = geometry.height;
+
+    printf("SIZE %dx%d\n", screenWidth, screenHeight);
 
     GtkWidget* fixedLayout = gtk_fixed_new();
     gtk_container_add(GTK_CONTAINER(window), fixedLayout);
