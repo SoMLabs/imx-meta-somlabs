@@ -4,7 +4,7 @@ KERNEL_SRC = "git://github.com/SoMLabs/somlabs-linux-imx.git;protocol=http"
 SRC_URI = "${KERNEL_SRC};branch=${KERNEL_BRANCH}"
 
 KERNEL_BRANCH = "somlabs_imx_5.15.52-2.1.0"
-SRCREV = "26ee6545f9f8f519c24d0bb71471266e0ed7eef8"
+SRCREV = "ebec3bb87c36d9f2f05f4ccc0b738d3871a7a47c"
 
 IMX_KERNEL_CONFIG_AARCH64:visionsom-8mm-cb = "somlabs_8m_defconfig"
 IMX_KERNEL_CONFIG_AARCH64:visionsbc-8mmini = "somlabs_8m_defconfig"
