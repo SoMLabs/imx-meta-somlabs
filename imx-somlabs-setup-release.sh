@@ -191,6 +191,11 @@ echo BUILD_DIR=$BUILD_DIR
 echo "BBLAYERS += \"\${BSPDIR}/sources/meta-somlabs\"" >> $BUILD_DIR/conf/bblayers.conf
 echo "LICENSE_FLAGS_ACCEPTED = \"commercial\"" >> $BUILD_DIR/conf/local.conf
 
+echo "MIRRORS += \" git://source.codeaurora.org/external/imx/ git://github.com/nxp-imx/ \"" >> $BUILD_DIR/conf/local.conf
+echo "MIRRORS += \" https://source.codeaurora.org/external/imx/ https://github.com/nxp-imx/ \"" >> $BUILD_DIR/conf/local.conf
+echo "MIRRORS += \" http://source.codeaurora.org/external/imx/ http://github.com/nxp-imx/ \"" >> $BUILD_DIR/conf/local.conf
+echo "MIRRORS += \" gitsm://source.codeaurora.org/external/imx/ gitsm://github.com/nxp-imx/ \"" >> $BUILD_DIR/conf/local.conf
+
 # Support integrating community meta-freescale instead of meta-fsl-arm
 if [ -d ../sources/meta-freescale ]; then
     echo meta-freescale directory found
