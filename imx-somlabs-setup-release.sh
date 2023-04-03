@@ -197,6 +197,11 @@ fi
 echo "BBLAYERS += \"\${BSPDIR}/sources/meta-somlabs\"" >> $BUILD_DIR/conf/bblayers.conf
 echo "LICENSE_FLAGS_WHITELIST = \"commercial\"" >> $BUILD_DIR/conf/local.conf
 
+echo "MIRRORS += \" git://source.codeaurora.org/external/imx/ git://github.com/nxp-imx/ \"" >> $BUILD_DIR/conf/local.conf
+echo "MIRRORS += \" https://source.codeaurora.org/external/imx/ https://github.com/nxp-imx/ \"" >> $BUILD_DIR/conf/local.conf
+echo "MIRRORS += \" http://source.codeaurora.org/external/imx/ http://github.com/nxp-imx/ \"" >> $BUILD_DIR/conf/local.conf
+echo "MIRRORS += \" gitsm://source.codeaurora.org/external/imx/ gitsm://github.com/nxp-imx/ \"" >> $BUILD_DIR/conf/local.conf
+
 echo BSPDIR=$BSPDIR
 echo BUILD_DIR=$BUILD_DIR
 
