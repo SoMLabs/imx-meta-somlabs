@@ -22,6 +22,12 @@ IMAGE_INSTALL:append = " \
     packagegroup-imx-security \
     packagegroup-fsl-gstreamer1.0 \
     packagegroup-fsl-gstreamer1.0-full \
+    libcamera \
+    opencv \
+    opencv-dev \
+    packagegroup-imx-ml \
+    packagegroup-imx-isp \
+    python3-pip \
 "
 
 IMAGE_INSTALL:append:visioncb-6ull-std-nand = " \

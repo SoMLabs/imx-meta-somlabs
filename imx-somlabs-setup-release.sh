@@ -127,8 +127,9 @@ if [ ! -f classes/fsl-eula-unpack.bbclass ]; then
 fi
 cd -
 
-# Override the click-through in meta-freescale/EULA
-FSL_EULA_FILE=$CWD/sources/meta-imx/EULA.txt
+# Override the click-through in meta-freescale
+FSL_EULA_FILE=$CWD/sources/meta-imx/LICENSE.txt
+
 
 # Set up the basic yocto environment
 if [ -z "$DISTRO" ]; then
@@ -177,24 +178,23 @@ hook_in_layer meta-imx/meta-v2x
 hook_in_layer meta-nxp-demo-experience
 
 echo "" >> $BUILD_DIR/conf/bblayers.conf
+echo "BBLAYERS += \"\${BSPDIR}/sources/meta-arm/meta-arm\"" >> $BUILD_DIR/conf/bblayers.conf
+echo "BBLAYERS += \"\${BSPDIR}/sources/meta-arm/meta-arm-toolchain\"" >> $BUILD_DIR/conf/bblayers.conf
 echo "BBLAYERS += \"\${BSPDIR}/sources/meta-browser/meta-chromium\"" >> $BUILD_DIR/conf/bblayers.conf
 echo "BBLAYERS += \"\${BSPDIR}/sources/meta-clang\"" >> $BUILD_DIR/conf/bblayers.conf
 echo "BBLAYERS += \"\${BSPDIR}/sources/meta-openembedded/meta-gnome\"" >> $BUILD_DIR/conf/bblayers.conf
 echo "BBLAYERS += \"\${BSPDIR}/sources/meta-openembedded/meta-networking\"" >> $BUILD_DIR/conf/bblayers.conf
 echo "BBLAYERS += \"\${BSPDIR}/sources/meta-openembedded/meta-filesystems\"" >> $BUILD_DIR/conf/bblayers.conf
-
 echo "BBLAYERS += \"\${BSPDIR}/sources/meta-qt6\"" >> $BUILD_DIR/conf/bblayers.conf
+echo "BBLAYERS += \"\${BSPDIR}/sources/meta-security/meta-parsec\"" >> $BUILD_DIR/conf/bblayers.conf
+echo "BBLAYERS += \"\${BSPDIR}/sources/meta-security/meta-tpm\"" >> $BUILD_DIR/conf/bblayers.conf
+echo "BBLAYERS += \"\${BSPDIR}/sources/meta-virtualization\"" >> $BUILD_DIR/conf/bblayers.conf
 
 echo BSPDIR=$BSPDIR
 echo BUILD_DIR=$BUILD_DIR
 
 echo "BBLAYERS += \"\${BSPDIR}/sources/meta-somlabs\"" >> $BUILD_DIR/conf/bblayers.conf
 echo "LICENSE_FLAGS_ACCEPTED = \"commercial\"" >> $BUILD_DIR/conf/local.conf
-
-echo "MIRRORS += \" git://source.codeaurora.org/external/imx/ git://github.com/nxp-imx/ \"" >> $BUILD_DIR/conf/local.conf
-echo "MIRRORS += \" https://source.codeaurora.org/external/imx/ https://github.com/nxp-imx/ \"" >> $BUILD_DIR/conf/local.conf
-echo "MIRRORS += \" http://source.codeaurora.org/external/imx/ http://github.com/nxp-imx/ \"" >> $BUILD_DIR/conf/local.conf
-echo "MIRRORS += \" gitsm://source.codeaurora.org/external/imx/ gitsm://github.com/nxp-imx/ \"" >> $BUILD_DIR/conf/local.conf
 
 # Support integrating community meta-freescale instead of meta-fsl-arm
 if [ -d ../sources/meta-freescale ]; then
