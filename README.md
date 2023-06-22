@@ -19,7 +19,7 @@ The summary of required steps including the meta-somlabs layer is shown below:
 ```shell
 mkdir imx-yocto-bsp
 cd imx-yocto-bsp
-repo init -u https://source.codeaurora.org/external/imx/imx-manifest -b imx-linux-zeus -m imx-5.4.47-2.2.0.xml
+repo init -u https://github.com/nxp-imx/imx-manifest -b imx-linux-zeus -m imx-5.4.47-2.2.0.xml
 repo sync
 cd sources
 git clone -b zeus https://github.com/SoMLabs/imx-meta-somlabs.git meta-somlabs
