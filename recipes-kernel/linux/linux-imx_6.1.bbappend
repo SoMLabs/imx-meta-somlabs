@@ -6,6 +6,9 @@ SRC_URI = "${KERNEL_SRC};branch=${KERNEL_BRANCH}"
 KERNEL_BRANCH = "somlabs_imx_6.1.1-1.0.0-WIP"
 SRCREV = "b2f275ae6800c03ef25d3d6bcb4b84af73a3e514"
 
+LINUX_VERSION = "5.15.52"
+LOCALVERSION = "-somlabs_imx"
+
 IMX_KERNEL_CONFIG_AARCH64:visionsom-8mm-cb = "somlabs_8m_defconfig"
 IMX_KERNEL_CONFIG_AARCH64:visionsbc-8mmini = "somlabs_8m_defconfig"
 IMX_KERNEL_CONFIG_AARCH64:spacesom-8mplus-cb = "somlabs_8m_defconfig"
