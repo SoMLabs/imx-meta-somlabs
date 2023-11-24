@@ -1,0 +1,2 @@
+ACTION=="add", SUBSYSTEM=="leds", KERNEL=="LED-IO*", RUN+="/bin/chgrp led /sys/class/leds/%k/brightness"
+ACTION=="add", SUBSYSTEM=="leds", KERNEL=="LED-IO*", RUN+="/bin/chmod g+w /sys/class/leds/%k/brightness"

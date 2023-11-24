@@ -1,0 +1,2 @@
+SUBSYSTEM=="dma_heap", KERNEL=="linux,cma" , MODE="0660", GROUP="video"
+SUBSYSTEM=="dma_heap", KERNEL=="linux,cma-uncached" , MODE="0660", GROUP="video"

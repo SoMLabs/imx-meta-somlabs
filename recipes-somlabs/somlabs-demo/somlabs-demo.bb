@@ -13,13 +13,12 @@ DEPENDS += "gstreamer1.0-libav"
 DEPENDS += "glib-2.0"
 
 SRC_URI = " \
-    file://somlabs_demo_gui_launch_6ull.sh \
-    file://somlabs_demo_gui_launch_8mmini.sh \
-    file://somlabs_demo_gui_launch_sbc_8mmini.sh \
+    file://somlabs_demo_gui_launch.sh \
+    file://somlabs_demo_gui_launch_led11.sh \
+    file://somlabs_demo_gui_launch_led4.sh \
     file://main_gui.c \
-    file://background_6ull.jpg \
-    file://background_8mmini.jpg \
-    file://background_sbc_8mmini.jpg \
+    file://background_800_480.jpg \
+    file://background_1280_720.jpg \
     file://somlabs.png \
     file://theme.css \
     http://ftp.somlabs.com/misc/example_video.mp4 \
@@ -42,28 +41,28 @@ do_install() {
 }
 
 do_install:append:visionsom-8mm-cb() {
-    install -m 0755 background_8mmini.jpg ${D}/usr/share/somlabs-demo/background.jpg
-    install -m 0755 somlabs_demo_gui_launch_8mmini.sh ${D}/usr/share/somlabs-demo/somlabs_demo_gui_launch.sh
+    install -m 0755 background_1280_720.jpg ${D}/usr/share/somlabs-demo/background.jpg
+    install -m 0755 somlabs_demo_gui_launch_led4.sh ${D}/usr/share/somlabs-demo/somlabs_demo_gui_launch.sh
 }
 
 do_install:append:visionsbc-8mmini() {
-    install -m 0755 background_sbc_8mmini.jpg ${D}/usr/share/somlabs-demo/background.jpg
-    install -m 0755 somlabs_demo_gui_launch_sbc_8mmini.sh ${D}/usr/share/somlabs-demo/somlabs_demo_gui_launch.sh
+    install -m 0755 background_1280_720.jpg ${D}/usr/share/somlabs-demo/background.jpg
+    install -m 0755 somlabs_demo_gui_launch.sh ${D}/usr/share/somlabs-demo/somlabs_demo_gui_launch.sh
 }
 
 do_install:append:visioncb-6ull-std() {
-    install -m 0755 background_6ull.jpg ${D}/usr/share/somlabs-demo/background.jpg
-    install -m 0755 somlabs_demo_gui_launch_6ull.sh ${D}/usr/share/somlabs-demo/somlabs_demo_gui_launch.sh
+    install -m 0755 background_800_480.jpg ${D}/usr/share/somlabs-demo/background.jpg
+    install -m 0755 somlabs_demo_gui_launch_led11.sh ${D}/usr/share/somlabs-demo/somlabs_demo_gui_launch.sh
 }
 
 do_install:append:starsom-cb-6ull() {
-    install -m 0755 background_6ull.jpg ${D}/usr/share/somlabs-demo/background.jpg
-    install -m 0755 somlabs_demo_gui_launch_6ull.sh ${D}/usr/share/somlabs-demo/somlabs_demo_gui_launch.sh
+    install -m 0755 background_800_480.jpg ${D}/usr/share/somlabs-demo/background.jpg
+    install -m 0755 somlabs_demo_gui_launch_led11.sh ${D}/usr/share/somlabs-demo/somlabs_demo_gui_launch.sh
 }
 
 do_install:append:spacesom-8mplus-cb() {
-    install -m 0755 background_8mmini.jpg ${D}/usr/share/somlabs-demo/background.jpg
-    install -m 0755 somlabs_demo_gui_launch_8mmini.sh ${D}/usr/share/somlabs-demo/somlabs_demo_gui_launch.sh
+    install -m 0755 background_1280_720.jpg ${D}/usr/share/somlabs-demo/background.jpg
+    install -m 0755 somlabs_demo_gui_launch_led4.sh ${D}/usr/share/somlabs-demo/somlabs_demo_gui_launch.sh
 }
 
 FILES:${PN} = " /usr/share/somlabs-demo/ "

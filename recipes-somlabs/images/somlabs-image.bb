@@ -1,6 +1,6 @@
 DESCRIPTION = "This is the basic image for SoMLabs boards and modules"
 
-inherit core-image
+inherit core-image extrausers
 
 IMAGE_FEATURES:append = " \
     debug-tweaks \
@@ -8,34 +8,22 @@ IMAGE_FEATURES:append = " \
     tools-debug \
     ssh-server-dropbear \
     hwcodecs \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'weston', \
-       bb.utils.contains('DISTRO_FEATURES',     'x11', 'x11-base x11-sato', \
-                                                       '', d), d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'weston', '', d)} \
 "
 
 IMAGE_INSTALL:append = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'x11 wayland', 'weston-xwayland xterm', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'packagegroup-fsl-gstreamer1.0-full', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'somlabs-demo', '', d)} \
     firmwared \
+    can-utils \
     packagegroup-core-full-cmdline \
-    packagegroup-imx-core-tools \
-    packagegroup-imx-security \
-    packagegroup-fsl-gstreamer1.0 \
-    packagegroup-fsl-gstreamer1.0-full \
-    libcamera \
-    opencv \
-    opencv-dev \
-    packagegroup-imx-ml \
-    packagegroup-imx-isp \
-    python3-pip \
+    packagegroup-fsl-tools-testapps \
+    udev-rules-somlabs \
 "
 
-IMAGE_INSTALL:append:visioncb-6ull-std-nand = " \
-    kernel \
-    kernel-devicetree \
+EXTRA_USERS_PARAMS = " \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', \
+                         'groupadd led; usermod -a -G led weston;', '', d)} \
 "
 
-IMAGE_INSTALL:remove:visioncb-6ull-std-nand = " \
-    packagegroup-fsl-gstreamer1.0 \
-    packagegroup-fsl-gstreamer1.0-full \
-"

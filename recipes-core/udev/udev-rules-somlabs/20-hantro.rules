@@ -1,0 +1,2 @@
+KERNEL=="mxc_hantro",  MODE="0660", GROUP="video"
+KERNEL=="mxc_hantro_h1",  MODE="0660", GROUP="video"

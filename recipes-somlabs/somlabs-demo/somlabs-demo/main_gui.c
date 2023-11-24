@@ -30,11 +30,11 @@ gboolean gst_is_wayland_display_handle_need_context_message(GstMessage * msg)
 {
     const gchar *type = NULL;
 
-    g_return_val_if_fail (GST_IS_MESSAGE (msg), FALSE);
+    g_return_val_if_fail(GST_IS_MESSAGE(msg), FALSE);
 
-    if (GST_MESSAGE_TYPE (msg) == GST_MESSAGE_NEED_CONTEXT &&
-        gst_message_parse_context_type (msg, &type)) {
-        return !g_strcmp0 (type, "GstWaylandDisplayHandleContextType");
+    if(GST_MESSAGE_TYPE(msg) == GST_MESSAGE_NEED_CONTEXT &&
+        gst_message_parse_context_type(msg, &type)) {
+        return !g_strcmp0(type, "GstWlDisplayHandleContextType");
   }
 
   return FALSE;
@@ -50,7 +50,7 @@ static GstBusSyncReply bus_sync_handler(GstBus* bus, GstMessage* message, gpoint
         display = gtk_widget_get_display(videoWidget);
         display_handle = gdk_wayland_display_get_wl_display(display);
 
-        context = gst_context_new("GstWaylandDisplayHandleContextType", TRUE);
+        context = gst_context_new("GstWlDisplayHandleContextType", TRUE);
         gst_structure_set (gst_context_writable_structure (context),
              "handle", G_TYPE_POINTER, display_handle, NULL);
 
@@ -59,7 +59,6 @@ static GstBusSyncReply bus_sync_handler(GstBus* bus, GstMessage* message, gpoint
         gst_message_unref(message);
         videoContextSet = true;
         return GST_BUS_DROP;
-
     } else if (gst_is_video_overlay_prepare_window_handle_message(message)) {
         GtkAllocation allocation;
         GdkWindow* window;
@@ -207,8 +206,6 @@ int main(int argc, char* argv[])
 
     int screenWidth = geometry.width;
     int screenHeight = geometry.height;
-
-    printf("SIZE %dx%d\n", screenWidth, screenHeight);
 
     GtkWidget* fixedLayout = gtk_fixed_new();
     gtk_container_add(GTK_CONTAINER(window), fixedLayout);

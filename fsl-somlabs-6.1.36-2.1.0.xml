@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+  <remote name="yocto"       fetch="https://git.yoctoproject.org"/>
+  <remote name="oe"          fetch="https://github.com/openembedded"/>
+  <remote name="community"   fetch="https://github.com/Freescale"/>
+  <remote name="somlabs"     fetch="https://github.com/SoMLabs"/>
+
+  <project name="poky" path="sources/poky" remote="yocto" revision="0a98281d37b0bd8dc1548c390216cb3978e36e0e" upstream="mickledore"/>
+  <project name="meta-openembedded" path="sources/meta-openembedded" remote="oe" revision="75cf318cef3b4ee81fad2782cf063ecd69ba8842" upstream="mickledore"/>
+
+  <project name="fsl-community-bsp-base" path="sources/base" remote="community" revision="60f79f7af60537146298560079ae603260f0bd14" upstream="master">
+    <linkfile dest="README" src="README"/>
+    <linkfile dest="setup-environment" src="setup-environment"/>
+  </project>
+  <project name="meta-freescale" path="sources/meta-freescale" remote="community" revision="9b00d40b787c2b7105ce209f5635cc1a0cab81ca" upstream="master"/>
+  <project name="meta-freescale-3rdparty" path="sources/meta-freescale-3rdparty" remote="community" revision="93ba05e3a16a028b770fa1e813b13eb87a59ac63" upstream="master"/>
+  <project name="meta-freescale-distro" path="sources/meta-freescale-distro" remote="community" revision="b09c18a3f649f0cf1b40432bb39e76ba16fe94e2" upstream="master"/>
+
+  <project name="imx-meta-somlabs" path="sources/meta-somlabs" remote="somlabs" revision="mickledore">
+    <linkfile src="fsl-somlabs-setup-environment.sh" dest="fsl-somlabs-setup-environment.sh"/>
+  </project>
+
+</manifest>
