@@ -17,6 +17,7 @@ IMAGE_INSTALL:append = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'somlabs-demo', '', d)} \
     firmwared \
     can-utils \
+    libgpiod-tools \
     packagegroup-core-full-cmdline \
     packagegroup-fsl-tools-testapps \
     udev-rules-somlabs \
