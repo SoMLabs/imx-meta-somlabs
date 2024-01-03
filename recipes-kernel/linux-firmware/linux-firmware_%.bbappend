@@ -11,8 +11,8 @@ do_install:append () {
 
 FILES:${PN}-bcm43430 += " \
        ${nonarch_base_libdir}/firmware/brcm/brcmfmac43430-sdio.clm_blob \
-       ${nonarch_base_libdir}/firmware/brcm/brcmfmac43430-sdio.somlabs,visionsom-imx8mm.bin \
-       ${nonarch_base_libdir}/firmware/brcm/brcmfmac43430-sdio.somlabs,visionsom-imx8mm.txt \
+       ${nonarch_base_libdir}/firmware/brcm/brcmfmac43430-sdio.${BCM_FIRMWARE_SUFFIX}.bin \
+       ${nonarch_base_libdir}/firmware/brcm/brcmfmac43430-sdio.${BCM_FIRMWARE_SUFFIX}.txt \
        ${nonarch_base_libdir}/firmware/brcm/BCM43430A1.hcd \
 "
 

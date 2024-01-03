@@ -29,7 +29,7 @@ do_install:append:visionsom-8mm-cb() {
     rm -f ${D}${sysconfdir}/xdg/weston/weston.ini
 }
 
-do_install:append:visionsbc-8mmini() {
+do_install:append:titansbc-8mmini() {
     install -m 0644 ${WORKDIR}/weston_8m.ini ${D}${sysconfdir}/xdg/weston/weston.ini
 }
 

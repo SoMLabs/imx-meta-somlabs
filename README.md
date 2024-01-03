@@ -27,7 +27,7 @@ System building may be configured for one of the available machine configuration
 
 * visioncb-6ull-std - VisionCB-6ULL-STD board with VisionSOM-6ULL modules 
 * visionsom-8mm-cb - VisionCB-8M board family with VisionSOM-8Mmini modules
-* visionsbc-8mmini - VisionSBC-8Mmini board
+* titansbc-8mmini - TitanSBC-8Mmini board
 * starsom-cb-6ull - StarCB-6ULL board with StarSOM-6ULL modules
 * starsbc-6ull - StarSBC-6ULL board with or without the COMM shield
 * spacesom-8mplus-cb - SpaceCB-8Mplus board with SpaceSOM-8Mplus module
