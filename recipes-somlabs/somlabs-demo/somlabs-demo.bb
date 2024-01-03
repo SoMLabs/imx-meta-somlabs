@@ -45,7 +45,7 @@ do_install:append:visionsom-8mm-cb() {
     install -m 0755 somlabs_demo_gui_launch_led4.sh ${D}/usr/share/somlabs-demo/somlabs_demo_gui_launch.sh
 }
 
-do_install:append:visionsbc-8mmini() {
+do_install:append:titansbc-8mmini() {
     install -m 0755 background_1280_720.jpg ${D}/usr/share/somlabs-demo/background.jpg
     install -m 0755 somlabs_demo_gui_launch.sh ${D}/usr/share/somlabs-demo/somlabs_demo_gui_launch.sh
 }

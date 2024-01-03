@@ -19,7 +19,7 @@ do_install:append:visionsom-8mm-cb() {
         install -m 0644 ${WORKDIR}/20-hantro.rules ${D}${sysconfdir}/udev/rules.d/
 }
 
-do_install:append:visionsbc-8mmini() {
+do_install:append:titansbc-8mmini() {
         install -m 0644 ${WORKDIR}/20-hantro.rules ${D}${sysconfdir}/udev/rules.d/
 }
 
