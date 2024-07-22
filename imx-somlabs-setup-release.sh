@@ -115,21 +115,8 @@ imx8*)
     ;;
 esac
 
-# Cleanup previous meta-freescale/EULA overrides
-cd $CWD/sources/meta-freescale
-if [ -h EULA ]; then
-    echo Cleanup meta-freescale/EULA...
-    git checkout -- EULA
-fi
-if [ ! -f classes/fsl-eula-unpack.bbclass ]; then
-    echo Cleanup meta-freescale/classes/fsl-eula-unpack.bbclass...
-    git checkout -- classes/fsl-eula-unpack.bbclass
-fi
-cd -
-
 # Override the click-through in meta-freescale
 FSL_EULA_FILE=$CWD/sources/meta-imx/LICENSE.txt
-
 
 # Set up the basic yocto environment
 if [ -z "$DISTRO" ]; then
@@ -167,15 +154,14 @@ else
 fi
 
 
-META_FSL_BSP_RELEASE="${CWD}/sources/meta-imx/meta-bsp"
+META_FSL_BSP_RELEASE="${CWD}/sources/meta-imx/meta-imx-bsp"
 
 echo "" >> $BUILD_DIR/conf/bblayers.conf
 echo "# i.MX Yocto Project Release layers" >> $BUILD_DIR/conf/bblayers.conf
-hook_in_layer meta-imx/meta-bsp
-hook_in_layer meta-imx/meta-sdk
-hook_in_layer meta-imx/meta-ml
-hook_in_layer meta-imx/meta-v2x
-hook_in_layer meta-nxp-demo-experience
+hook_in_layer meta-imx/meta-imx-bsp
+hook_in_layer meta-imx/meta-imx-sdk
+hook_in_layer meta-imx/meta-imx-ml
+hook_in_layer meta-imx/meta-imx-v2x
 
 echo "" >> $BUILD_DIR/conf/bblayers.conf
 echo "BBLAYERS += \"\${BSPDIR}/sources/meta-arm/meta-arm\"" >> $BUILD_DIR/conf/bblayers.conf
@@ -187,8 +173,6 @@ echo "BBLAYERS += \"\${BSPDIR}/sources/meta-openembedded/meta-networking\"" >> $
 echo "BBLAYERS += \"\${BSPDIR}/sources/meta-openembedded/meta-filesystems\"" >> $BUILD_DIR/conf/bblayers.conf
 echo "BBLAYERS += \"\${BSPDIR}/sources/meta-qt6\"" >> $BUILD_DIR/conf/bblayers.conf
 echo "BBLAYERS += \"\${BSPDIR}/sources/meta-security/meta-parsec\"" >> $BUILD_DIR/conf/bblayers.conf
-echo "BBLAYERS += \"\${BSPDIR}/sources/meta-security/meta-tpm\"" >> $BUILD_DIR/conf/bblayers.conf
-echo "BBLAYERS += \"\${BSPDIR}/sources/meta-virtualization\"" >> $BUILD_DIR/conf/bblayers.conf
 
 echo BSPDIR=$BSPDIR
 echo BUILD_DIR=$BUILD_DIR

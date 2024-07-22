@@ -10,7 +10,7 @@ This layer should be used in order to build the system image. It adds a new exam
 
 ## Building the system image
 
-The general description of the building process is described in the iMX Yocto Project User's Guide document for version 6.1.36_2.1.0:
+The general description of the building process is described in the iMX Yocto Project User's Guide document for version 6.6.23-2.0.0:
 
 https://www.nxp.com/design/software/embedded-software/i-mx-software/embedded-linux-for-i-mx-applications-processors:IMXLINUX
 
@@ -21,7 +21,7 @@ The summary of required steps including the meta-somlabs layer is shown below.
 ```shell
 mkdir imx-yocto-bsp
 cd imx-yocto-bsp
-repo init -u https://github.com/SoMLabs/imx-meta-somlabs -b mickledore -m imx-somlabs-6.1.36-2.1.0.xml
+repo init -u https://github.com/SoMLabs/imx-meta-somlabs -b scarthgap -m imx-somlabs-6.6.23-2.0.0.xml
 repo sync
 ```
 
@@ -30,7 +30,7 @@ repo sync
 ```shell
 mkdir imx-yocto-bsp
 cd imx-yocto-bsp
-repo init -u https://github.com/SoMLabs/imx-meta-somlabs -b mickledore -m fsl-somlabs-6.1.36-2.1.0.xml
+repo init -u https://github.com/SoMLabs/imx-meta-somlabs -b scarthgap -m fsl-somlabs-6.6.23-2.0.0.xml
 repo sync
 ```
 
@@ -66,11 +66,11 @@ DISTRO=<SELECTED_DISTRIBUTION> MACHINE=<SELECTED_MACHINE> source fsl-somlabs-set
 bitbake somlabs-image
 ```
 
-The system image is located in the somlabs-image-<SELECTED_MACHINE>.wic.zst or somlabs-image-<SELECTED_MACHINE>.wic.gz file in the tmp/deploy/images/<SELECTED_MACHINE> directory. It should be extracted with one of the commands:
+The system image is located in the somlabs-image-<SELECTED_MACHINE>.rootfs.wic.zst or somlabs-image-<SELECTED_MACHINE>.rootfs.wic.gz file in the tmp/deploy/images/<SELECTED_MACHINE> directory. It should be extracted with one of the commands:
 
 ```shell
-unzstd somlabs-image-<SELECTED_MACHINE>.wic.zst 
-gunzip somlabs-image-<SELECTED_MACHINE>.wic.gz
+unzstd somlabs-image-<SELECTED_MACHINE>.rootfs.wic.zst 
+gunzip somlabs-image-<SELECTED_MACHINE>.rootfs.wic.gz
 ```
 
 The instruction for the eMMC memory image installation may be found on the wiki page for corresponding module:
