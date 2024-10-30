@@ -5,6 +5,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 SRC_URI = " file://20-dmaheap.rules \
             file://20-led.rules \
             file://20-hantro.rules \
+            file://20-pxp.rules \
 "
 
 S = "${WORKDIR}"
@@ -23,3 +24,6 @@ do_install:append:titansbc-8mmini() {
         install -m 0644 ${WORKDIR}/20-hantro.rules ${D}${sysconfdir}/udev/rules.d/
 }
 
+do_install:append:visionsom-imx93() {
+        install -m 0644 ${WORKDIR}/20-pxp.rules ${D}${sysconfdir}/udev/rules.d/
+}

@@ -2,14 +2,14 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 UBOOT_SRC = "git://github.com/SoMLabs/somlabs-uboot-imx.git;protocol=https"
 
-SRCBRANCH = "somlabs-imx_v2023.04_6.1.36-2.1.0"
+SRCBRANCH = "somlabs-imx_v2024.04_6.6.52-2.2.0"
 SRC_URI = "${UBOOT_SRC};branch=${SRCBRANCH} \
            file://splash.bmp \
            "
 
-LOCALVERSION="-somlabs-imx_v2023.04_6.1.36-2.1.0"
+LOCALVERSION="-somlabs-imx_v2024.04_6.6.52-2.2.0"
 
-SRCREV = "5c432b4c272edcb8d56f082ec75c79794ffecf6c"
+SRCREV = "7d1dee0d38cc1156599f300a1bc0c9ce6c4e9e61"
 
 do_install:append:visioncb-6ull-std() {
         install -d ${DEPLOY_DIR_IMAGE}

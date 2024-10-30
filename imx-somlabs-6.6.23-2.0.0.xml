@@ -36,9 +36,8 @@
      <linkfile src="tools/imx-setup-release.sh" dest="imx-setup-release.sh"/>
      <linkfile src="README" dest="README-IMXBSP"/>
   </project>
-  <project name="imx-meta-somlabs" path="sources/meta-somlabs" remote="somlabs" revision="scarthgap">
+  <project name="imx-meta-somlabs" path="sources/meta-somlabs" remote="somlabs" revision="6c23381a8a2e795599097c4d5ac86a19643be012">
     <linkfile src="imx-somlabs-setup-release.sh" dest="imx-somlabs-setup-release.sh"/>
   </project>
 
 </manifest>
-

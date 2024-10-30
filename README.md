@@ -10,9 +10,11 @@ This layer should be used in order to build the system image. It adds a new exam
 
 ## Building the system image
 
-The general description of the building process is described in the iMX Yocto Project User's Guide document for version 6.6.23-2.0.0:
+The general description of the building process is described in the iMX Yocto Project User's Guide document for version 6.6.52-2.2.0:
 
 https://www.nxp.com/design/software/embedded-software/i-mx-software/embedded-linux-for-i-mx-applications-processors:IMXLINUX
+
+**NOTE: Since imx-somlabs-6.6.52-2.2.0 version gstreamer with wayland sink is no longer supported on iMX6ULL platforms. In order to use this feature the imx-somlabs-6.6.23-2.0.0 version shall be used configured using respective repo xml files.**
 
 The summary of required steps including the meta-somlabs layer is shown below.
 
@@ -21,7 +23,7 @@ The summary of required steps including the meta-somlabs layer is shown below.
 ```shell
 mkdir imx-yocto-bsp
 cd imx-yocto-bsp
-repo init -u https://github.com/SoMLabs/imx-meta-somlabs -b scarthgap -m imx-somlabs-6.6.23-2.0.0.xml
+repo init -u https://github.com/SoMLabs/imx-meta-somlabs -b scarthgap -m imx-somlabs-6.6.52-2.2.0.xml
 repo sync
 ```
 
@@ -30,18 +32,19 @@ repo sync
 ```shell
 mkdir imx-yocto-bsp
 cd imx-yocto-bsp
-repo init -u https://github.com/SoMLabs/imx-meta-somlabs -b scarthgap -m fsl-somlabs-6.6.23-2.0.0.xml
+repo init -u https://github.com/SoMLabs/imx-meta-somlabs -b scarthgap -m fsl-somlabs-6.6.52-2.2.0.xml
 repo sync
 ```
 
 System building may be configured for one of the available machine configurations:
 
+* spacesom-8mplus-cb - SpaceCB-8Mplus board with SpaceSOM-8Mplus module
+* starsbc-6ull - StarSBC-6ULL board with or without the COMM shield
+* starsom-cb-6ull - StarCB-6ULL board with StarSOM-6ULL modules
+* titansbc-8mmini - TitanSBC-8Mmini board
 * visioncb-6ull-std - VisionCB-6ULL-STD board with VisionSOM-6ULL modules 
 * visionsom-8mm-cb - VisionCB-8M board family with VisionSOM-8Mmini modules
-* titansbc-8mmini - TitanSBC-8Mmini board
-* starsom-cb-6ull - StarCB-6ULL board with StarSOM-6ULL modules
-* starsbc-6ull - StarSBC-6ULL board with or without the COMM shield
-* spacesom-8mplus-cb - SpaceCB-8Mplus board with SpaceSOM-8Mplus module
+* visionsom-imx93 - VisionCB-iMX93-STD board family with VisionSOM-iMX93 modules
 
 The following system distributions were tested on SoMLabs modules:
 
@@ -49,6 +52,15 @@ The following system distributions were tested on SoMLabs modules:
 * somlabs-xwayland - distribution with wayland and x11 enabled
 
 **NOTE: Since 6.1.x kernel uptade the GPU drivers on iMX8MPlus require modules with at least 2GB RAM available. For 1GB RAM spacesom-8mplus-cb machine use somlabs-fb distro only.**
+
+**NOTE: In case of issues with audio/video playback using gstreamer on spacesom-8mplus-cb board with meta-freescale layers, the following commands may be executed to use a newer version of imx-vpu-hantro drivers.**
+
+```shell
+cd sources
+git clone -b rel_imx_6.6.52_2.2.0 https://github.com/nxp-imx/meta-imx
+cp -r meta-imx/meta-imx-bsp/recipes-bsp/imx-vpu-hantro* meta-somlabs/recipes-bsp/
+cp -r meta-imx/meta-imx-bsp/classes meta-somlabs/
+```
 
 System building may be started by the following commands:
 
