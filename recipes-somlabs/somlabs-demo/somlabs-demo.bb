@@ -14,10 +14,9 @@ DEPENDS += "glib-2.0"
 
 SRC_URI = " \
     file://somlabs_demo_gui_launch.sh \
-    file://somlabs_demo_gui_launch_led11.sh \
+    file://somlabs_demo_gui_launch_led0.sh \
     file://somlabs_demo_gui_launch_led4.sh \
     file://main_gui.c \
-    file://background_800_480.jpg \
     file://background_1280_720.jpg \
     file://somlabs.png \
     file://theme.css \
@@ -38,31 +37,23 @@ do_install() {
     install -m 0755 somlabs.png ${D}/usr/share/somlabs-demo/
     install -m 0755 theme.css ${D}/usr/share/somlabs-demo/
     install -m 0755 example_video.mp4 ${D}/usr/share/somlabs-demo/example_video.mp4
+    install -m 0755 background_1280_720.jpg ${D}/usr/share/somlabs-demo/background.jpg
 }
 
 do_install:append:visionsom-8mm-cb() {
-    install -m 0755 background_1280_720.jpg ${D}/usr/share/somlabs-demo/background.jpg
     install -m 0755 somlabs_demo_gui_launch_led4.sh ${D}/usr/share/somlabs-demo/somlabs_demo_gui_launch.sh
 }
 
 do_install:append:titansbc-8mmini() {
-    install -m 0755 background_1280_720.jpg ${D}/usr/share/somlabs-demo/background.jpg
     install -m 0755 somlabs_demo_gui_launch.sh ${D}/usr/share/somlabs-demo/somlabs_demo_gui_launch.sh
 }
 
-do_install:append:visioncb-6ull-std() {
-    install -m 0755 background_800_480.jpg ${D}/usr/share/somlabs-demo/background.jpg
-    install -m 0755 somlabs_demo_gui_launch_led11.sh ${D}/usr/share/somlabs-demo/somlabs_demo_gui_launch.sh
-}
-
-do_install:append:starsom-cb-6ull() {
-    install -m 0755 background_800_480.jpg ${D}/usr/share/somlabs-demo/background.jpg
-    install -m 0755 somlabs_demo_gui_launch_led11.sh ${D}/usr/share/somlabs-demo/somlabs_demo_gui_launch.sh
-}
-
 do_install:append:spacesom-8mplus-cb() {
-    install -m 0755 background_1280_720.jpg ${D}/usr/share/somlabs-demo/background.jpg
     install -m 0755 somlabs_demo_gui_launch_led4.sh ${D}/usr/share/somlabs-demo/somlabs_demo_gui_launch.sh
+}
+
+do_install:append:visionsom-imx93() {
+    install -m 0755 somlabs_demo_gui_launch_led0.sh ${D}/usr/share/somlabs-demo/somlabs_demo_gui_launch.sh
 }
 
 FILES:${PN} = " /usr/share/somlabs-demo/ "

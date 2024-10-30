@@ -1,10 +1,10 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 ATF_SRC = "git://github.com/SoMLabs/somlabs-imx-atf.git;protocol=https"
-SRCBRANCH = "somlabs_imx_v2.8_6.1.36-2.1.0"
+
+SRCBRANCH = "somlabs_imx_v2.10_6.6.52-2.2.0"
 SRC_URI = "${ATF_SRC};branch=${SRCBRANCH}"
 
-SRCREV = "c659de1639cf02d651bef0406e49e58d6c797ae4"
+SRCREV = "f7d8191a7668fde20f7e4c653a72cc51c7d94c2f"
 
-ATF_BOOT_UART_BASE = "0x30a60000"
-PV = "2.8"
+PV = "2.10"

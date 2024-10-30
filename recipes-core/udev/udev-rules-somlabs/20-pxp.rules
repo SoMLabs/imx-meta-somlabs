@@ -1,0 +1,1 @@
+KERNEL=="pxp_device",  MODE="0660", GROUP="video"
