@@ -38,6 +38,7 @@ repo sync
 
 System building may be configured for one of the available machine configurations:
 
+* somlabs-iot-box-6ull - SoMLabs IoT-BOX board with VisionSOM-6ULL modules
 * spacesom-8mplus-cb - SpaceCB-8Mplus board with SpaceSOM-8Mplus module
 * starsbc-6ull - StarSBC-6ULL board with or without the COMM shield
 * starsom-cb-6ull - StarCB-6ULL board with StarSOM-6ULL modules
