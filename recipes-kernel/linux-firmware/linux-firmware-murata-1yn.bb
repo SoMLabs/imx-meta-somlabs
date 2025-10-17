@@ -24,7 +24,8 @@ SRCREV_bt = "bbc63f8b15394023c4a2fd9f74565fbd0d76ae71"
 
 SRCREV_FORMAT = "bt_fw_nvram"
 
-S = "${WORKDIR}"
+S = "${WORKDIR}/src"
+UNPACKDIR = "${S}"
 
 addtask copy_lic after do_patch before do_populate_lic
 

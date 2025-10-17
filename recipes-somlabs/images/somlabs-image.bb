@@ -3,7 +3,10 @@ DESCRIPTION = "This is the basic image for SoMLabs boards and modules"
 inherit core-image extrausers
 
 IMAGE_FEATURES:append = " \
-    debug-tweaks \
+    allow-empty-password \
+    allow-root-login \
+    empty-root-password \
+    post-install-logging \
     tools-sdk \
     tools-debug \
     ssh-server-dropbear \

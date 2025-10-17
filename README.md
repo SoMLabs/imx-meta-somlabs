@@ -10,11 +10,11 @@ This layer should be used in order to build the system image. It adds a new exam
 
 ## Building the system image
 
-The general description of the building process is described in the iMX Yocto Project User's Guide document for version 6.6.52-2.2.0:
+The general description of the building process is described in the iMX Yocto Project User's Guide document for version 6.12.34-2.1.0:
 
 https://www.nxp.com/design/software/embedded-software/i-mx-software/embedded-linux-for-i-mx-applications-processors:IMXLINUX
 
-**NOTE: Since imx-somlabs-6.6.52-2.2.0 version gstreamer with wayland sink is no longer supported on iMX6ULL platforms. In order to use this feature the imx-somlabs-6.6.23-2.0.0 version shall be used configured using respective repo xml files.**
+**NOTE: Since imx-somlabs-6.6.52-2.2.0 version gstreamer with wayland sink is no longer supported on iMX6ULL platforms. In order to use this feature the imx-somlabs-6.6.23-2.0.0 scarthgap version shall be used configured using respective repo xml files.**
 
 The summary of required steps including the meta-somlabs layer is shown below.
 
@@ -23,7 +23,7 @@ The summary of required steps including the meta-somlabs layer is shown below.
 ```shell
 mkdir imx-yocto-bsp
 cd imx-yocto-bsp
-repo init -u https://github.com/SoMLabs/imx-meta-somlabs -b scarthgap -m imx-somlabs-6.6.52-2.2.0.xml
+repo init -u https://github.com/SoMLabs/imx-meta-somlabs -b walnascar -m imx-somlabs-6.12.34-2.1.0.xml
 repo sync
 ```
 
@@ -32,7 +32,7 @@ repo sync
 ```shell
 mkdir imx-yocto-bsp
 cd imx-yocto-bsp
-repo init -u https://github.com/SoMLabs/imx-meta-somlabs -b scarthgap -m fsl-somlabs-6.6.52-2.2.0.xml
+repo init -u https://github.com/SoMLabs/imx-meta-somlabs -b walnascar -m fsl-somlabs-6.12.34-2.1.0.xml
 repo sync
 ```
 
@@ -58,7 +58,7 @@ The following system distributions were tested on SoMLabs modules:
 
 ```shell
 cd sources
-git clone -b rel_imx_6.6.52_2.2.0 https://github.com/nxp-imx/meta-imx
+git clone -b rel_imx_6.12.34_2.1.0 https://github.com/nxp-imx/meta-imx
 cp -r meta-imx/meta-imx-bsp/recipes-bsp/imx-vpu-hantro* meta-somlabs/recipes-bsp/
 cp -r meta-imx/meta-imx-bsp/classes meta-somlabs/
 ```

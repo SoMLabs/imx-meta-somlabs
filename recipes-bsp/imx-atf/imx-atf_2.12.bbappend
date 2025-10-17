@@ -2,9 +2,9 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 ATF_SRC = "git://github.com/SoMLabs/somlabs-imx-atf.git;protocol=https"
 
-SRCBRANCH = "somlabs_imx_v2.10_6.6.52-2.2.0"
+SRCBRANCH = "somlabs_imx_v2.12_6.12.34-2.1.0"
 SRC_URI = "${ATF_SRC};branch=${SRCBRANCH}"
 
-SRCREV = "f7d8191a7668fde20f7e4c653a72cc51c7d94c2f"
+SRCREV = "1c1e42b58999080176e7f1077035d4b010a51581"
 
 PV = "2.10"

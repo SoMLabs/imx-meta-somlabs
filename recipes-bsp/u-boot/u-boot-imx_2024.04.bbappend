@@ -13,10 +13,10 @@ SRCREV = "8889212ddd82ccf952e8e79adcfdc68aade8cf46"
 
 do_install:append:visioncb-6ull-std() {
         install -d ${DEPLOY_DIR_IMAGE}
-        install -m 0644 ${WORKDIR}/splash.bmp ${DEPLOY_DIR_IMAGE}/splash.bmp
+        install -m 0644 ${UNPACKDIR}/splash.bmp ${DEPLOY_DIR_IMAGE}/splash.bmp
 }
 
 do_install:append:starsom-cb-6ull() {
         install -d ${DEPLOY_DIR_IMAGE}
-        install -m 0644 ${WORKDIR}/splash.bmp ${DEPLOY_DIR_IMAGE}/splash.bmp
+        install -m 0644 ${UNPACKDIR}/splash.bmp ${DEPLOY_DIR_IMAGE}/splash.bmp
 }

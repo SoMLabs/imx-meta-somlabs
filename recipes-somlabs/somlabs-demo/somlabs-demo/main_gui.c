@@ -11,7 +11,7 @@
 
 GstElement* pipeline;
 GtkWidget* videoWidget;
-GtkLabel* usageLabel;
+GtkWidget* usageLabel;
 bool videoContextSet = false;
 unsigned long int time1old;
 unsigned long int time2old;
@@ -77,6 +77,8 @@ static GstBusSyncReply bus_sync_handler(GstBus* bus, GstMessage* message, gpoint
         gst_message_unref(message);
         return GST_BUS_DROP;
 
+    } else if (GST_MESSAGE_TYPE(message) == GST_MESSAGE_ASYNC_DONE) {
+        gtk_widget_queue_draw(videoWidget);
     }
 
     return GST_BUS_PASS;
@@ -115,7 +117,7 @@ gboolean timerTimeout(gpointer user_data)
     char text[8];
     sprintf(text, "%d%%", usage);
 
-    gtk_label_set_text(usageLabel, text);
+    gtk_label_set_text(GTK_LABEL(usageLabel), text);
 
     time1old = time1;
     time2old = time2;

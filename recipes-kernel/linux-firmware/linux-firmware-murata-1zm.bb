@@ -16,7 +16,8 @@ SRCREV_FORMAT = "cal_fw"
 
 SRC_URI[sha256sum] = "d97831abf0a570b8a793829af5e260f0d83f4fc6e847ce1e0078564f117867cc"
 
-S = "${WORKDIR}"
+S = "${WORKDIR}/src"
+UNPACKDIR = "${S}"
 
 COUNTRY = "EU"
 
