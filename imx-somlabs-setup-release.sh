@@ -108,20 +108,20 @@ if [ -z "$MACHINE" ]; then
 fi
 
 case $MACHINE in
-imx6*|imx7*)
-    : ok
-    ;;
-*)
+*imx91*)
     case $FSLDISTRO in
     *wayland)
-        : ok
-        ;;
-    *)
-        echo -e "\n ERROR - Only Wayland distros are supported for $MACHINE"
+        echo -e "\n ERROR - Only FB distros are supported for $MACHINE"
         echo -e "\n"
         return 1
         ;;
+    *)
+        : ok
+        ;;
     esac
+    ;;
+*)
+    : ok
     ;;
 esac
 

@@ -45,6 +45,7 @@ System building may be configured for one of the available machine configuration
 * titansbc-8mmini - TitanSBC-8Mmini board
 * visioncb-6ull-std - VisionCB-6ULL-STD board with VisionSOM-6ULL modules 
 * visionsom-8mm-cb - VisionCB-8M board family with VisionSOM-8Mmini modules
+* visionsom-imx91 - VisionCB-iMX91-STD board family with VisionSOM-iMX91 modules
 * visionsom-imx93 - VisionCB-iMX93-STD board family with VisionSOM-iMX93 modules
 
 The following system distributions were tested on SoMLabs modules:

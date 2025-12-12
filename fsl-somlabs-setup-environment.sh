@@ -134,6 +134,24 @@ if [ "$build_dir_setup_enabled" = "true" ] && [ -z "$DISTRO" ]; then
     return 1
 fi
 
+case $MACHINE in
+*imx91*)
+    case $DISTRO in
+    *wayland)
+        echo -e "\n ERROR - Only FB distros are supported for $MACHINE"
+        echo -e "\n"
+        return 1
+        ;;
+    *)
+        : ok
+        ;;
+    esac
+    ;;
+*)
+    : ok
+    ;;
+esac
+
 [ -z "$FSL_EULA_FILE" ] && FSL_EULA_FILE=$CWD/sources/meta-freescale/EULA
 if [ ! -e $FSL_EULA_FILE ]; then
     echo -e "ERROR: EULA not found at $FSL_EULA_FILE."
