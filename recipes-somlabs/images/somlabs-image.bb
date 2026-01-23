@@ -24,6 +24,10 @@ IMAGE_INSTALL:append = " \
     udev-rules-somlabs \
 "
 
+IMAGE_INSTALL:append:somlabs-aiot-box-8mplus = " \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'packagegroup-fsl-gstreamer1.0-full', '', d)} \
+"
+
 IMAGE_INSTALL:append:spacesom-8mplus-cb = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'packagegroup-fsl-gstreamer1.0-full', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'somlabs-demo', '', d)} \

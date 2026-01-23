@@ -24,6 +24,10 @@ do_install:append:spacesom-8mplus-cb() {
     install -m 0644 ${S}/weston_8m.ini ${D}${sysconfdir}/xdg/weston/weston.ini
 }
 
+do_install:append:somlabs-aiot-box-8mplus() {
+    install -m 0644 ${S}/weston_8m.ini ${D}${sysconfdir}/xdg/weston/weston.ini
+}
+
 do_install:append:visioncb-6ull-std() {
     install -m 0644 ${S}/weston_6ull.ini ${D}${sysconfdir}/xdg/weston/weston.ini
 }
