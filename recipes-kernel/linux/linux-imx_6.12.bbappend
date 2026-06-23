@@ -4,6 +4,7 @@ require recipes-kernel/linux/linux-imx-somlabs-src.inc
 
 KBUILD_DEFCONFIG:somlabs-aiot-box-8mplus = "somlabs_v8_defconfig"
 KBUILD_DEFCONFIG:spacesom-8mplus-cb = "somlabs_v8_defconfig"
+KBUILD_DEFCONFIG:starsom-8mp-cb = "somlabs_v8_defconfig"
 KBUILD_DEFCONFIG:titansbc-8mmini = "somlabs_v8_defconfig"
 KBUILD_DEFCONFIG:visionsom-8mm-cb = "somlabs_v8_defconfig"
 KBUILD_DEFCONFIG:visionsom-imx91 = "somlabs_v8_defconfig"

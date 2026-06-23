@@ -53,6 +53,10 @@ do_install:append:spacesom-8mplus-cb() {
     install -m 0755 somlabs_demo_gui_launch_led4.sh ${D}/usr/share/somlabs-demo/somlabs_demo_gui_launch.sh
 }
 
+do_install:append:starsom-8mp-cb() {
+    install -m 0755 somlabs_demo_gui_launch_led4.sh ${D}/usr/share/somlabs-demo/somlabs_demo_gui_launch.sh
+}
+
 do_install:append:visionsom-imx93() {
     install -m 0755 somlabs_demo_gui_launch_led0.sh ${D}/usr/share/somlabs-demo/somlabs_demo_gui_launch.sh
 }

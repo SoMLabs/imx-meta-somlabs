@@ -31,6 +31,13 @@ IMAGE_INSTALL:append:somlabs-aiot-box-8mplus = " \
 IMAGE_INSTALL:append:spacesom-8mplus-cb = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'packagegroup-fsl-gstreamer1.0-full', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'somlabs-demo', '', d)} \
+    packagegroup-imx-isp \
+"
+
+IMAGE_INSTALL:append:starsom-8mp-cb = " \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'packagegroup-fsl-gstreamer1.0-full', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'somlabs-demo', '', d)} \
+    packagegroup-imx-isp \
 "
 
 IMAGE_INSTALL:append:titansbc-8mmini = " \
@@ -53,4 +60,3 @@ EXTRA_USERS_PARAMS = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', \
                          'groupadd led; usermod -a -G led weston;', '', d)} \
 "
-
