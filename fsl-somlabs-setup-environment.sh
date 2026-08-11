@@ -56,7 +56,7 @@ Supported Freescale's distros: `echo; ls sources/meta-freescale-distro/conf/dist
 `echo; ls sources/meta-freescale-distro/conf/distro/fsl-*.conf \
 | sed s/\.conf//g | sed -r 's/^.+\///' | xargs -I% echo -e "\t%"`
 
-Available Poky's distros: `echo; ls sources/poky/meta-poky/conf/distro/*.conf \
+Available Poky's distros: `echo; ls sources/meta-yocto/meta-poky/conf/distro/*.conf \
 | sed s/\.conf//g | sed -r 's/^.+\///' | xargs -I% echo -e "\t%"`
 
 Examples:
@@ -159,10 +159,7 @@ if [ ! -e $FSL_EULA_FILE ]; then
     return 1
 fi
 
-OEROOT=$PWD/sources/poky
-if [ -e $PWD/sources/oe-core ]; then
-    OEROOT=$PWD/sources/oe-core
-fi
+OEROOT=$PWD/sources/openembedded-core
 
 . $OEROOT/oe-init-build-env $CWD/$1 > /dev/null
 
@@ -186,6 +183,9 @@ if [ "$build_dir_setup_enabled" = "true" ]; then
 
 DL_DIR ?= "\${BSPDIR}/downloads/"
 EOF
+    if ! grep -q "DISTRO ?=" conf/local.conf; then
+        sed "1iDISTRO ?= '$DISTRO'" -i conf/local.conf
+    fi
     # Change settings according environment
     sed -e "s,MACHINE ??=.*,MACHINE ??= '$MACHINE',g" \
         -e "s,SDKMACHINE ??=.*,SDKMACHINE ??= '$SDKMACHINE',g" \

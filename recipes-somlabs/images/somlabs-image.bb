@@ -15,12 +15,12 @@ IMAGE_FEATURES:append = " \
 "
 
 IMAGE_INSTALL:append = " \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'x11 wayland', 'weston-xwayland xterm', '', d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES', 'x11 wayland', \
+                         'weston-xwayland xterm v4l-utils', '', d)} \
     firmwared \
     can-utils \
     libgpiod-tools \
     packagegroup-core-full-cmdline \
-    packagegroup-fsl-tools-testapps \
     udev-rules-somlabs \
 "
 
@@ -31,13 +31,11 @@ IMAGE_INSTALL:append:somlabs-aiot-box-8mplus = " \
 IMAGE_INSTALL:append:spacesom-8mplus-cb = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'packagegroup-fsl-gstreamer1.0-full', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'somlabs-demo', '', d)} \
-    packagegroup-imx-isp \
 "
 
 IMAGE_INSTALL:append:starsom-8mp-cb = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'packagegroup-fsl-gstreamer1.0-full', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'somlabs-demo', '', d)} \
-    packagegroup-imx-isp \
 "
 
 IMAGE_INSTALL:append:titansbc-8mmini = " \
@@ -54,7 +52,6 @@ IMAGE_INSTALL:append:visionsom-imx93 = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'packagegroup-fsl-gstreamer1.0-full', '', d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', 'somlabs-demo', '', d)} \
 "
-
 
 EXTRA_USERS_PARAMS = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'wayland', \

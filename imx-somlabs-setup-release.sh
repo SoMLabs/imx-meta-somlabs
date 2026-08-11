@@ -179,6 +179,15 @@ echo "BBLAYERS += \"\${BSPDIR}/sources/meta-openembedded/meta-filesystems\"" >> 
 echo "BBLAYERS += \"\${BSPDIR}/sources/meta-openembedded/meta-perl\"" >> $BUILD_DIR/conf/bblayers.conf
 echo "BBLAYERS += \"\${BSPDIR}/sources/meta-qt6\"" >> $BUILD_DIR/conf/bblayers.conf
 echo "BBLAYERS += \"\${BSPDIR}/sources/meta-security/meta-parsec\"" >> $BUILD_DIR/conf/bblayers.conf
+echo "BBLAYERS += \"\${BSPDIR}/sources/meta-freescale-ml\"" >> $BUILD_DIR/conf/bblayers.conf
+
+# Development board images are more useful with the empty root password.
+echo -e "\n====================================== Important Note =========================================="
+echo "This setup is optimized for development boards and is not appropriate for production boards."
+
+bitbake-config-build enable-fragment core/yocto/root-login-with-empty-password
+
+echo -e "================================================================================================\n"
 
 echo BSPDIR=$BSPDIR
 echo BUILD_DIR=$BUILD_DIR

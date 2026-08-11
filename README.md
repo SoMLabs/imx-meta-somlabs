@@ -10,7 +10,7 @@ This layer should be used in order to build the system image. It adds a new exam
 
 ## Building the system image
 
-The general description of the building process is described in the iMX Yocto Project User's Guide document for version 6.12.34-2.1.0:
+The general description of the building process is described in the iMX Yocto Project User's Guide document for version 6.18.20-2.0.0:
 
 https://www.nxp.com/design/software/embedded-software/i-mx-software/embedded-linux-for-i-mx-applications-processors:IMXLINUX
 
@@ -23,7 +23,7 @@ The summary of required steps including the meta-somlabs layer is shown below.
 ```shell
 mkdir imx-yocto-bsp
 cd imx-yocto-bsp
-repo init -u https://github.com/SoMLabs/imx-meta-somlabs -b walnascar -m imx-somlabs-6.12.34-2.1.0.xml
+repo init -u https://github.com/SoMLabs/imx-meta-somlabs -b wrynose -m imx-somlabs-6.18.20-2.0.0.xml
 repo sync
 ```
 
@@ -32,7 +32,7 @@ repo sync
 ```shell
 mkdir imx-yocto-bsp
 cd imx-yocto-bsp
-repo init -u https://github.com/SoMLabs/imx-meta-somlabs -b walnascar -m fsl-somlabs-6.12.34-2.1.0.xml
+repo init -u https://github.com/SoMLabs/imx-meta-somlabs -b wrynose -m fsl-somlabs-6.18.20-2.0.0.xml
 repo sync
 ```
 
@@ -56,15 +56,6 @@ The following system distributions were tested on SoMLabs modules:
 * somlabs-xwayland - distribution with wayland and x11 enabled
 
 **NOTE: Since 6.1.x kernel uptade the GPU drivers on iMX8MPlus require modules with at least 2GB RAM available. For 1GB RAM spacesom-8mplus-cb machine use somlabs-fb distro only.**
-
-**NOTE: In case of issues with audio/video playback using gstreamer on spacesom-8mplus-cb board with meta-freescale layers, the following commands may be executed to use a newer version of imx-vpu-hantro drivers.**
-
-```shell
-cd sources
-git clone -b rel_imx_6.12.34_2.1.0 https://github.com/nxp-imx/meta-imx
-cp -r meta-imx/meta-imx-bsp/recipes-bsp/imx-vpu-hantro* meta-somlabs/recipes-bsp/
-cp -r meta-imx/meta-imx-bsp/classes meta-somlabs/
-```
 
 System building may be started by the following commands:
 

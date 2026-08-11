@@ -25,8 +25,7 @@ SRC_URI = " \
 
 SRC_URI[sha256sum] = "6e10c996cce94f6c1f6ba7ef1af7bb7066e30267a8cc1a3123f5bd9897e1a2b5"
 
-S = "${WORKDIR}/src"
-UNPACKDIR = "${S}"
+S = "${UNPACKDIR}"
 
 do_compile() {
     ${CC} ${CFLAGS} ${LDFLAGS} main_gui.c -o somlabs_demo_gui `pkg-config --cflags --libs gtk+-3.0 gstreamer-1.0 gstreamer-video-1.0 gstreamer-plugins-base-1.0 gstreamer-plugins-bad-1.0 glib-2.0` -rdynamic -I=/usr/lib/gstreamer-1.0/include -lgstwayland-1.0 -L=/usr/lib/gstreamer-1.0/ -lgstwaylandsink

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+  <remote name="yocto"       fetch="https://git.yoctoproject.org"/>
+  <remote name="oe"          fetch="https://github.com/openembedded"/>
+  <remote name="community"   fetch="https://github.com/Freescale"/>
+  <remote name="somlabs"     fetch="https://github.com/SoMLabs"/>
+
+  <project name="bitbake" remote="oe" path="sources/bitbake" revision="a2dd9be788274d9c7280be5b1be5eb5c3990cf54" upstream="2.18"/>
+  <project name="openembedded-core" remote="oe" path="sources/openembedded-core" revision="42fa856a00ac16b2a7a83d7ecfa60a5be192b16c" upstream="wrynose" />
+  <project name="meta-yocto" remote="yocto" path="sources/meta-yocto" revision="904846ae078ee20de073040ebb77c86e19250f56" upstream="wrynose" />
+  <project name="meta-openembedded" remote="oe" path="sources/meta-openembedded" revision="420222862f5a6d95023b8f5f3b7e1808b2264ef9" upstream="wrynose" />
+
+  <project name="fsl-community-bsp-base" remote="community" path="sources/base" revision="e2b65583ca857eed5d7aa675a77712fa58096bb0" upstream="wrynose" >
+    <linkfile dest="setup-environment" src="setup-environment"/>
+  </project>
+
+  <project name="meta-freescale" remote="community" path="sources/meta-freescale" revision="3949624f36cbc5b7fd4033ce5ef001d83fc1a3e9" upstream="wrynose"/>
+  <project name="meta-freescale-3rdparty" remote="community" path="sources/meta-freescale-3rdparty" revision="3358b11ef81d52b9c9972d454dd43c120cbbdaf5" upstream="wrynose"/>
+  <project name="meta-freescale-distro" remote="community" path="sources/meta-freescale-distro" revision="70b7591ecaa99cb6366f93ee05df7c38d94d724b" upstream="wrynose"/>
+
+  <project name="imx-meta-somlabs" path="sources/meta-somlabs" remote="somlabs" revision="wrynose">
+    <linkfile src="fsl-somlabs-setup-environment.sh" dest="fsl-somlabs-setup-environment.sh"/>
+  </project>
+
+</manifest>
+

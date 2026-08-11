@@ -14,8 +14,7 @@ SRC_URI = " \
   git://github.com/murata-wireless/cyw-fmac-nvram.git;protocol=https;nobranch=1;name=nvram;destsuffix=nvram \
 "
 
-S = "${WORKDIR}/src"
-UNPACKDIR = "${S}"
+S = "${UNPACKDIR}"
 
 SRCREV_bt = "9d24c254dae92af99ddfd661a4ea30af69190038"
 SRCREV_fw = "716b63d941ebe56dcb528b482cb74d6aff119fd4"
@@ -39,9 +38,9 @@ do_install() {
 addtask copy_lic after do_patch before do_populate_lic
 
 do_copy_lic() {
-  cp ${S}/bt/LICENCE.cypress ${B}/LICENCE.cypress_bt
-  cp ${S}/fw/LICENCE ${B}/LICENCE.cypress_fw
-  cp ${S}/nvram/LICENCE.cypress ${B}/LICENCE.cypress_nvram
+  cp ${UNPACKDIR}/bt/LICENCE.cypress ${B}/LICENCE.cypress_bt
+  cp ${UNPACKDIR}/fw/LICENCE ${B}/LICENCE.cypress_fw
+  cp ${UNPACKDIR}/nvram/LICENCE.cypress ${B}/LICENCE.cypress_nvram
 }
 
 FILES:${PN} = " ${nonarch_base_libdir}/firmware/brcm/ "
