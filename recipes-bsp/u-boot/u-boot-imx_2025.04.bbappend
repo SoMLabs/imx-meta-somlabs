@@ -9,7 +9,7 @@ SRC_URI = "${UBOOT_SRC};branch=${SRCBRANCH} \
 
 LOCALVERSION = "-somlabs-imx_v2025.04_6.18.20-2.0.0"
 
-SRCREV = "de562c237bc31058c25dccfa14e4009df08a6b76"
+SRCREV = "ab4f435efd86807f0856bf9a94539de466c60b37"
 
 do_install:append:visioncb-6ull-std() {
         install -d ${DEPLOY_DIR_IMAGE}
