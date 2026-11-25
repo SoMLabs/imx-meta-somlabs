@@ -1,7 +1,7 @@
 KERNEL_SRC = "git://github.com/SoMLabs/somlabs-linux-imx.git;protocol=http"
 SRC_URI = "${KERNEL_SRC};branch=${KERNEL_BRANCH}"
 KERNEL_BRANCH = "somlabs_imx_6.18.20-2.0.0"
-SRCREV = "1d1886d328c5c24988159fec23187014f86f63b4"
+SRCREV = "50a430267be8675e25c5308e8dd31c632e5f5d70"
 LINUX_VERSION = "6.18.20"
 LOCALVERSION = "-somlabs"
 PV = "${LINUX_VERSION}"
